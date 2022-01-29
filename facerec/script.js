@@ -181,7 +181,7 @@ function recognizeFaces(){
     //faceapi.draw.drawDetections(canvas, resizedDetections2)
     //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
-    setTimeout(3000)
+    setTimeout(function(){alert("refresh")},1000)
     checkCookie()
     }, 100)  
     
