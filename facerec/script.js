@@ -131,9 +131,6 @@ function recognizeFaces(){
     // 得到的結果
     const resizedDetections = faceapi.resizeResults(detections, displaySize)    
     
-    // 心情與結果
-    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-    const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)
     
     start = new Date().getTime();
     
@@ -176,15 +173,18 @@ function recognizeFaces(){
             `${gender} (${parseInt(genderProbability * 100, 10)})`
             ], detection.detection.box.topRight).draw(canvas)
         })
-    
-    setInterval(async () => {      
+ 
+
+    // 心情與結果
+      const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+      const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)          
       //faceapi.draw.drawDetections(canvas, resizedDetections2)
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
-    }, 100)
- 
+
     checkCookie()
-    }, 100)
+    }, 100)  
+    
 }
 
 
