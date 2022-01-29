@@ -188,7 +188,7 @@ function recognizeFaces(){
         const { expressions } = detection2
         new faceapi.draw.DrawTextField([            
             `${expressions} `
-            ], detection2.detection.box.topRight).draw(canvas)
+            ], detection2.detection2.box.topRight).draw(canvas)
         })
  
     checkCookie()
