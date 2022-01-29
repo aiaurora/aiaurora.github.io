@@ -129,13 +129,15 @@ function recognizeFaces(){
     // 年紀性別
     const detections = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withAgeAndGender()          
     // 得到的結果
-    const resizedDetections = faceapi.resizeResults(detections, displaySize)
+    const resizedDetections = faceapi.resizeResults(detections, displaySize)    
+     
     start = new Date().getTime();
     
     if(resizedDetections.length >= 1){
         age = resizedDetections[0]['age']                // 年紀
         box = resizedDetections[0]['detection']['_box']  
-        gender = resizedDetections[0]['gender']          // 性別
+        gender = resizedDetections[0]['gender']          // 性別      
+      
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
@@ -172,11 +174,11 @@ function recognizeFaces(){
         })
 
     setInterval(async () => {
-      const detections = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-      const resizedDetections = faceapi.resizeResults(detections, displaySize)
-      faceapi.draw.drawDetections(canvas, resizedDetections)
-      faceapi.draw.drawFaceLandmarks(canvas, resizedDetections)
-      faceapi.draw.drawFaceExpressions(canvas, resizedDetections)
+      const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+      const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)
+      faceapi.draw.drawDetections(canvas, resizedDetections2)
+      faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
+      faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
     }, 100)
  
     checkCookie()
