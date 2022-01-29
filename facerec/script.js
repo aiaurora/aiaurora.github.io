@@ -183,7 +183,7 @@ function recognizeFaces(){
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
 
     checkCookie()
-    }, 100)  
+    }, 1000)  
     
 }
 
