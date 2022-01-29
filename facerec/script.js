@@ -182,13 +182,13 @@ function recognizeFaces(){
             `${gender} (${parseInt(genderProbability * 100, 10)})`
             ], detection.detection.box.topRight).draw(canvas)
         })
-    resizedDetections2.forEach(detection2 => {
+    resizedDetections2.forEach(detection => {
         canvas.style.left = getPosition(video1)["x"] + "px";
         canvas.style.top = getPosition(video1)["y"] + "px";
-        const { expressions } = detection2
+        const { expressions } = detection
         new faceapi.draw.DrawTextField([            
             `${expressions} `
-            ], detection2.detection2.box.topRight).draw(canvas)
+            ], detection.detection.box.topRight).draw(canvas)
         })
  
     checkCookie()
