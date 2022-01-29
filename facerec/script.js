@@ -73,6 +73,7 @@ function checkCookie()
 Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('./models'),     // 偵測臉部 
     faceapi.nets.ageGenderNet.loadFromUri('./models'),         // 年紀性別
+    faceapi.nets.faceExpressionNet.loadFromUri('./models'),    // 情緒 
     console.log("load models OK"),
     mask.style.display = "block",
     loadImg.style.display = "block",
@@ -125,12 +126,17 @@ function recognizeFaces(){
     const detections = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withAgeAndGender()          
     // 得到的結果
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
+    // 情緒
+    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()          
+    // 得到的結果2
+    const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)
     start = new Date().getTime();
     
     if(resizedDetections.length >= 1){
         age = resizedDetections[0]['age']                // 年紀
         box = resizedDetections[0]['detection']['_box']  
-        gender = resizedDetections[0]['gender']          // 性別
+        gender = resizedDetections[0]['gender']          // 性別   
+        expressions = resizedDetections2[0]['expressions']          // 情緒
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
@@ -140,6 +146,16 @@ function recognizeFaces(){
                 type: "POST",
                 data: {
                   "value":parseInt(age)
+                },
+                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
+                type: "POST",
+                data: {
+                  "value":parseInt(gender)
+                },
+                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
+                type: "POST",
+                data: {
+                  "value":parseInt(expressions)
                 },
               })
               
@@ -152,6 +168,7 @@ function recognizeFaces(){
     loadImg.style.display = "none"
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     faceapi.draw.drawDetections(canvas, resizedDetections)
+    faceapi.draw.drawDetections(canvas, resizedDetections2)  
 
     var dis_y = (video1.offsetHeight-video1.offsetWidth/1.337)/2   // 從左上角增加的距離
     var dis_x = (video1.offsetWidth-video1.offsetHeight*1.337)/2
@@ -159,10 +176,11 @@ function recognizeFaces(){
     resizedDetections.forEach(detection => {
         canvas.style.left = getPosition(video1)["x"] + "px";
         canvas.style.top = getPosition(video1)["y"] + "px";
-        const { age, gender, genderProbability } = detection
+        const { age, gender, genderProbability, expressions } = detection
         new faceapi.draw.DrawTextField([
             `${parseInt(age, 10)} years`,
-            `${gender} (${parseInt(genderProbability * 100, 10)})`
+            `${gender} (${parseInt(genderProbability * 100, 10)})`,
+            `${expressions} `
             ], detection.detection.box.topRight).draw(canvas)
         })
  
