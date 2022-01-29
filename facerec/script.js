@@ -185,7 +185,7 @@ function recognizeFaces(){
             ], detection.detection.box.topRight).draw(canvas)
         })          
     
-    setTimeout(1000)
+    //setTimeout(1000)
     checkCookie()
     }, 100)  
     
