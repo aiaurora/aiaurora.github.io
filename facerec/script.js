@@ -126,17 +126,13 @@ function recognizeFaces(){
     const detections = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withAgeAndGender()          
     // 得到的結果
     const resizedDetections = faceapi.resizeResults(detections, displaySize)
-    // 情緒
-    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceExpressions()          
-    // 得到的結果2
-    const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)
     start = new Date().getTime();
     
     if(resizedDetections.length >= 1){
         age = resizedDetections[0]['age']                // 年紀
         box = resizedDetections[0]['detection']['_box']  
         gender = resizedDetections[0]['gender']          // 性別      
-        expressions = resizedDetections2[0]['expressions']          // 情緒
+        mood = resizedDetections[0]['expressions']          // 情緒
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
@@ -155,7 +151,7 @@ function recognizeFaces(){
                 url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
                 data: {
-                  "value":parseInt(expressions)
+                  "value":parseInt(mood)
                 },
               })
               
@@ -168,7 +164,6 @@ function recognizeFaces(){
     loadImg.style.display = "none"
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     faceapi.draw.drawDetections(canvas, resizedDetections)
-    faceapi.draw.drawDetections(canvas, resizedDetections2)
 
     var dis_y = (video1.offsetHeight-video1.offsetWidth/1.337)/2   // 從左上角增加的距離
     var dis_x = (video1.offsetWidth-video1.offsetHeight*1.337)/2
