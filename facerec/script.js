@@ -126,11 +126,13 @@ function recognizeFaces(){
     inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"
     displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }
     faceapi.matchDimensions(canvas, displaySize)
-    // 年紀性別
+    // 年紀性別與結果
     const detections = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withAgeAndGender()          
-    // 得到的結果
     const resizedDetections = faceapi.resizeResults(detections, displaySize)    
-    
+   
+    // 心情與結果
+    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+    const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)   
     
     start = new Date().getTime();
     
@@ -149,6 +151,11 @@ function recognizeFaces(){
                 data: {
                   "value":parseInt(age)
                 },
+                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
+                type: "POST",
+                data: {
+                  "value":gender
+                },
               })
               
             end = start
@@ -160,7 +167,11 @@ function recognizeFaces(){
     loadImg.style.display = "none"
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     faceapi.draw.drawDetections(canvas, resizedDetections)
-
+    
+    //faceapi.draw.drawDetections(canvas, resizedDetections2)
+    //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
+    faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
+      
     var dis_y = (video1.offsetHeight-video1.offsetWidth/1.337)/2   // 從左上角增加的距離
     var dis_x = (video1.offsetWidth-video1.offsetHeight*1.337)/2
 
@@ -172,16 +183,9 @@ function recognizeFaces(){
             `${parseInt(age, 10)} years`,
             `${gender} (${parseInt(genderProbability * 100, 10)})`
             ], detection.detection.box.topRight).draw(canvas)
-        })
- 
-
-    // 心情與結果
-    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-    const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)          
-    //faceapi.draw.drawDetections(canvas, resizedDetections2)
-    //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
-    faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
-    setTimeout(function(){alert("refresh")},1000)
+        })          
+    
+    setTimeout(1000)
     checkCookie()
     }, 100)  
     
