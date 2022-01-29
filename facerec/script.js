@@ -76,7 +76,7 @@ Promise.all([
 
     //faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
     //faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('./models'),
+    faceapi.nets.faceExpressionNet.loadFromUri('./models'),    // 心情
     
     console.log("load models OK"),
     mask.style.display = "block",
@@ -130,7 +130,11 @@ function recognizeFaces(){
     const detections = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withAgeAndGender()          
     // 得到的結果
     const resizedDetections = faceapi.resizeResults(detections, displaySize)    
-     
+    
+    // 心情與結果
+    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+    const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)
+    
     start = new Date().getTime();
     
     if(resizedDetections.length >= 1){
@@ -174,10 +178,9 @@ function recognizeFaces(){
         })
 
     setInterval(async () => {
-      const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-      const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)
-      faceapi.draw.drawDetections(canvas, resizedDetections2)
-      faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
+      
+      //faceapi.draw.drawDetections(canvas, resizedDetections2)
+      //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
     }, 100)
  
