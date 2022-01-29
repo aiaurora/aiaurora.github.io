@@ -74,8 +74,8 @@ Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('./models'),     // 偵測臉部 
     faceapi.nets.ageGenderNet.loadFromUri('./models'),         // 年紀性別 
 
-    //faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
-    //faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
+    faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
     faceapi.nets.faceExpressionNet.loadFromUri('./models'),    // 心情
     
     console.log("load models OK"),
@@ -178,7 +178,7 @@ function recognizeFaces(){
     // 心情與結果
     const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
     const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)          
-    faceapi.draw.drawDetections(canvas, resizedDetections2)
+    //faceapi.draw.drawDetections(canvas, resizedDetections2)
     //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
 
