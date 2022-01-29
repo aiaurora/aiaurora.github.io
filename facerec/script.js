@@ -176,11 +176,11 @@ function recognizeFaces(){
  
 
     // 心情與結果
-      const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-      const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)          
-      //faceapi.draw.drawDetections(canvas, resizedDetections2)
-      //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
-      faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
+    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+    const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)          
+    faceapi.draw.drawDetections(canvas, resizedDetections2)
+    //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
+    faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
 
     checkCookie()
     }, 100)  
