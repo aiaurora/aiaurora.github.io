@@ -119,6 +119,7 @@ function recognizeFaces(){
     canvas.style.top = getPosition(video1)["y"] + "px";
     displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }
     faceapi.matchDimensions(canvas, displaySize)
+  
     setInterval(async () => {
     inputtext.style.width = video1.offsetWidth.toString()+"px"
     inputtext.style.height = video1.offsetHeight.toString()/8+"px"
@@ -159,8 +160,7 @@ function recognizeFaces(){
               })
               
             end = start
-        }
-        
+        }        
     }
     
     mask.style.display = "none"
@@ -180,12 +180,11 @@ function recognizeFaces(){
         canvas.style.top = getPosition(video1)["y"] + "px";
         const { age, gender, genderProbability } = detection
         new faceapi.draw.DrawTextField([
-            `${parseInt(age, 10)} years`,
+            `${parseInt(age, 10)} years old`,
             `${gender} (${parseInt(genderProbability * 100, 10)})`
             ], detection.detection.box.topRight).draw(canvas)
         })          
     
-    //setTimeout(1000)
     checkCookie()
     }, 100)  
     
