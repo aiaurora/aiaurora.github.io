@@ -168,6 +168,7 @@ function recognizeFaces(){
     loadImg.style.display = "none"
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
     faceapi.draw.drawDetections(canvas, resizedDetections)
+    faceapi.draw.drawDetections(canvas, resizedDetections2)
 
     var dis_y = (video1.offsetHeight-video1.offsetWidth/1.337)/2   // 從左上角增加的距離
     var dis_x = (video1.offsetWidth-video1.offsetHeight*1.337)/2
