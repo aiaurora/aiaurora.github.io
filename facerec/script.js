@@ -177,13 +177,11 @@ function recognizeFaces(){
             ], detection.detection.box.topRight).draw(canvas)
         })
     
-    faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
-   //setInterval(async () => {
-      
+    setInterval(async () => {      
       //faceapi.draw.drawDetections(canvas, resizedDetections2)
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
-      //faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
-    //}, 100)
+      faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
+    }, 100)
  
     checkCookie()
     }, 100)
