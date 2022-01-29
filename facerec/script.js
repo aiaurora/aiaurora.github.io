@@ -73,7 +73,6 @@ function checkCookie()
 Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('./models'),     // 偵測臉部 
     faceapi.nets.ageGenderNet.loadFromUri('./models'),         // 年紀性別  
-    faceapi.nets.faceExpressionNet.loadFromUri('./models'),    // 情緒 
     console.log("load models OK"),
     mask.style.display = "block",
     loadImg.style.display = "block",
@@ -131,8 +130,7 @@ function recognizeFaces(){
     if(resizedDetections.length >= 1){
         age = resizedDetections[0]['age']                // 年紀
         box = resizedDetections[0]['detection']['_box']  
-        gender = resizedDetections[0]['gender']          // 性別      
-        mood = resizedDetections[0]['expressions']          // 情緒
+        gender = resizedDetections[0]['gender']          // 性別     
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
@@ -147,11 +145,6 @@ function recognizeFaces(){
                 type: "POST",
                 data: {
                   "value":parseInt(gender)
-                },
-                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
-                type: "POST",
-                data: {
-                  "value":parseInt(mood)
                 },
               })
               
