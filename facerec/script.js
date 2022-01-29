@@ -150,12 +150,12 @@ function recognizeFaces(){
                 url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
                 data: {
-                  "value":parseInt(gender)
+                  "value":gender
                 },
                 url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
                 data: {
-                  "value":parseInt(expressions)
+                  "value":expressions
                 },
               })
               
@@ -176,12 +176,19 @@ function recognizeFaces(){
     resizedDetections.forEach(detection => {
         canvas.style.left = getPosition(video1)["x"] + "px";
         canvas.style.top = getPosition(video1)["y"] + "px";
-        const { age, gender, genderProbability, expressions } = detection
+        const { age, gender, genderProbability } = detection
         new faceapi.draw.DrawTextField([
             `${parseInt(age, 10)} years`,
-            `${gender} (${parseInt(genderProbability * 100, 10)})`,
-            `${expressions} `
+            `${gender} (${parseInt(genderProbability * 100, 10)})`
             ], detection.detection.box.topRight).draw(canvas)
+        })
+    resizedDetections2.forEach(detection2 => {
+        canvas.style.left = getPosition(video1)["x"] + "px";
+        canvas.style.top = getPosition(video1)["y"] + "px";
+        const { expressions } = detection2
+        new faceapi.draw.DrawTextField([            
+            `${expressions} `
+            ], detection2.detection.box.topRight).draw(canvas)
         })
  
     checkCookie()
