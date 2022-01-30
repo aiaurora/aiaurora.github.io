@@ -74,9 +74,9 @@ Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('./models'),     // 偵測臉部 
     faceapi.nets.ageGenderNet.loadFromUri('./models'),         // 年紀性別 
 
-    faceapi.nets.faceLandmark68Net.loadFromUri('./models'),    
+    faceapi.nets.faceLandmark68Net.loadFromUri('./models'), 
+    faceapi.nets.faceRecognitionNet.loadFromUri('./models'),   
     faceapi.nets.faceExpressionNet.loadFromUri('./models'),    // 心情
-    //faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
     
     console.log("load models OK"),
     mask.style.display = "block",
