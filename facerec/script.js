@@ -74,9 +74,9 @@ Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('./models'),     // 偵測臉部 
     faceapi.nets.ageGenderNet.loadFromUri('./models'),         // 年紀性別 
 
-    //faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
-    //faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
+    faceapi.nets.faceLandmark68Net.loadFromUri('./models'),    
     faceapi.nets.faceExpressionNet.loadFromUri('./models'),    // 心情
+    //faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
     
     console.log("load models OK"),
     mask.style.display = "block",
@@ -138,8 +138,8 @@ function recognizeFaces(){
     start = new Date().getTime();
     
     if(resizedDetections.length >= 1){
-        age = resizedDetections[0]['age']                // 年紀
         box = resizedDetections[0]['detection']['_box']  
+        age = resizedDetections[0]['age']                // 年紀        
         gender = resizedDetections[0]['gender']          // 性別      
       
         //console.log(start-end)
