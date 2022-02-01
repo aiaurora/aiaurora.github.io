@@ -142,9 +142,8 @@ function recognizeFaces(){
         age = resizedDetections[0]['age']                // 年紀        
         gender = resizedDetections[0]['gender']          // 性別  
       
-        mood1 = resizedDetections2[0]      // 心情 
-        mood2 = resizedDetections2[1]      // 心情 
-      
+        mood = resizedDetections2[0]['expressions']      // 心情 
+        console.log("mood： "mood)
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
@@ -182,11 +181,9 @@ function recognizeFaces(){
     resizedDetections.forEach(detection => {
         canvas.style.left = getPosition(video1)["x"] + "px";
         canvas.style.top = getPosition(video1)["y"] + "px";
-        const { age, mood, gender, genderProbability } = detection
+        const { age, gender, genderProbability } = detection
         new faceapi.draw.DrawTextField([
             `${parseInt(age, 10)} years old`,
-            `${mood1} mood1`,
-            `${mood2} mood2`,
             `${gender} (${parseInt(genderProbability * 100, 10)})`
             ], detection.detection.box.topRight).draw(canvas)
         }) 
