@@ -181,7 +181,7 @@ function recognizeFaces(){
     resizedDetections.forEach(detection => {
         canvas.style.left = getPosition(video1)["x"] + "px";
         canvas.style.top = getPosition(video1)["y"] + "px";
-        const { age, gender, genderProbability, mood } = detection
+        const { age, mood, gender, genderProbability } = detection
         new faceapi.draw.DrawTextField([
             `${parseInt(age, 10)} years old`,
             `${mood} test`,
