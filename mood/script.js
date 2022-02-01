@@ -142,7 +142,7 @@ function recognizeFaces(){
         age = resizedDetections[0]['age']                // 年紀        
         gender = resizedDetections[0]['gender']          // 性別  
       
-        mood = resizedDetections2['label']          // 心情 
+        mood = resizedDetections2[0]['FaceExpression']      // 心情 
       
         //console.log(start-end)
         if(start-end >=2000){
@@ -184,7 +184,7 @@ function recognizeFaces(){
         const { age, mood, gender, genderProbability } = detection
         new faceapi.draw.DrawTextField([
             `${parseInt(age, 10)} years old`,
-            `${mood} test`,
+            `${mood} mood`,
             `${gender} (${parseInt(genderProbability * 100, 10)})`
             ], detection.detection.box.topRight).draw(canvas)
         }) 
