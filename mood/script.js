@@ -143,7 +143,6 @@ function recognizeFaces(){
         gender = resizedDetections[0]['gender']          // 性別  
       
         mood = resizedDetections2['expressions']          // 心情 
-        console.log("mood:",mood)
       
         //console.log(start-end)
         if(start-end >=2000){
