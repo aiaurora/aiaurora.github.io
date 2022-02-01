@@ -140,7 +140,10 @@ function recognizeFaces(){
     if(resizedDetections.length >= 1){
         box = resizedDetections[0]['detection']['_box']  
         age = resizedDetections[0]['age']                // 年紀        
-        gender = resizedDetections[0]['gender']          // 性別   
+        gender = resizedDetections[0]['gender']          // 性別  
+      
+        mood = resizedDetections2['expressions']          // 心情 
+        console.log("mood:",mood)
       
         //console.log(start-end)
         if(start-end >=2000){
@@ -186,7 +189,6 @@ function recognizeFaces(){
             ], detection.detection.box.topRight).draw(canvas)
         }) 
       
-    mood = resizedDetections2['expression']          // 心情 
     //faceapi.draw.drawDetections(canvas, resizedDetections2)
     //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
