@@ -186,7 +186,7 @@ function recognizeFaces(){
             ], detection.detection.box.topRight).draw(canvas)
         }) 
       
-    mood = resizedDetections2[0]['expression']          // 心情 
+    mood = resizedDetections2['expression']          // 心情 
     //faceapi.draw.drawDetections(canvas, resizedDetections2)
     //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
