@@ -134,15 +134,13 @@ function recognizeFaces(){
     // 心情與結果
     const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
     const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)   
-    
+    mood = resizedDetections2[0]['expressions']          // 心情 
     start = new Date().getTime();
     
     if(resizedDetections.length >= 1){
         box = resizedDetections[0]['detection']['_box']  
         age = resizedDetections[0]['age']                // 年紀        
-        gender = resizedDetections[0]['gender']          // 性別  
-      
-        mood = resizedDetections2[0]['expressions']          // 心情      
+        gender = resizedDetections[0]['gender']          // 性別   
       
         //console.log(start-end)
         if(start-end >=2000){
