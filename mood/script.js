@@ -195,11 +195,14 @@ function recognizeFaces(){
     console.log("mood0： ",detections2)
     console.log("mood1： ",resizedDetections2)
     console.log("mood2： ",moods)  
-    console.log("mood2first： ",moods[0])
-    var moodsArray = Object.keys(moods).map(key => {
-            return moods[key]
+    
+    var a = Object.keys(moods).map(key => {
+         return {
+                [key]: moods[key]
+                }
         })
-    console.log("moodsArray： ",moodsArray);        
+    console.log(a)  
+    console.log("moodmax： ",Math.max(a)) 
       
     checkCookie()
     }, 100)  
