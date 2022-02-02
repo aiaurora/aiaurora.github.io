@@ -195,7 +195,12 @@ function recognizeFaces(){
     console.log("mood0： ",detections2)
     console.log("mood1： ",resizedDetections2)
     console.log("mood2： ",mood)  
-    console.log("mood2max： ",max(mood))
+    console.log("mood2first： ",mood[0])
+    max_val = mood[0]
+    for i in range(len(mood)):
+        if mood[i] > max_val:
+           max_val = mood[i]
+    console.log("mood2max： ",max_val)
     checkCookie()
     }, 100)  
     
