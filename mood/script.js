@@ -195,7 +195,7 @@ function recognizeFaces(){
     console.log("mood0： ",detections2)
     console.log("mood1： ",resizedDetections2)
     console.log("mood2： ",moods)  
-    console.log("mood2first： ",moods["neutral"],"or ",moods.neutral)
+    console.log("mood2first： ",moods[0])
     var moodsArray = Object.keys(moods).map(key => {
             return moods[key]
         })
