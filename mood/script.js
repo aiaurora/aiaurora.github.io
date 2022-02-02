@@ -167,11 +167,11 @@ function recognizeFaces(){
                 data: {
                   "value":parseInt(age)
                 },
-                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
-                type: "POST",
-                data: {
-                  "value":gender
-                },
+                //url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
+                //type: "POST",
+                //data: {
+                //  "value":gender
+                //},
                 //url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                 //type: "POST",
                 //data: {
