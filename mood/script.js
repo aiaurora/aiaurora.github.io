@@ -135,15 +135,16 @@ function recognizeFaces(){
     const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()   
     const resizedDetections2 = faceapi.resizeResults(detections2, displaySize) 
     moods = detections2[0]['expressions']      // 心情 
-    //moods = detections2[0]['expressions']      // 心情 
-        
+    //moods = resizedDetections2[0]['expressions']      // 心情 
+    //{key:value}物件轉為陣列型態[{key,value}]    
     var moodsArray = Object.keys(moods).map(key => {
          return {
-                "name": key,
-                "prop": moods[key]
+                "name": key,         //共有七種心情
+                "prop": moods[key]   //可信度
                 }
         })
-    console.log("moodsArray=", moodsArray)       
+    console.log("moodsArray=", moodsArray)
+    //找出可信度最高的心情
     moodsArray.sort((a, b) => {
       return b.prop - a.prop;
       })
@@ -175,7 +176,7 @@ function recognizeFaces(){
                 type: "POST",
                 data: {
                   "value":mood
-                }
+                },
               })
               
             end = start
