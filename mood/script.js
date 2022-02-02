@@ -203,10 +203,10 @@ function recognizeFaces(){
     var b = Object.keys(moods).map(key => {
          return moods[key]
         })
-    console.log("moods[key]=", b)
+    console.log("moods[key]b=", b)
     var c = Object.keys(moods).map(key => {
          return {
-                [key]b: moods[key]
+                [key]: moods[key]
                 }
         })
     console.log("[key]: moods[key]c=", c) 
