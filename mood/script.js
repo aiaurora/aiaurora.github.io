@@ -196,29 +196,18 @@ function recognizeFaces(){
     console.log("mood1： ",resizedDetections2)
     console.log("mood2： ",moods)  
     
-    var a = Object.keys(moods).map(key => {
-         return [key]
-        })
-    console.log("[key]a=", a)  
-    var b = Object.keys(moods).map(key => {
-         return moods[key]
-        })
-    console.log("moods[key]b=", b)
-    var c = Object.keys(moods).map(key => {
+    var moodArray = Object.keys(moods).map(key => {
          return {
-                [key]: moods[key]
+                "name": key,
+                "prop": moods[key]
                 }
         })
-    console.log("[key]: moods[key]c=", c) 
-    
-    Array.prototype.max = function() {
-          return this.reduce(function(preValue, curValue,index,array) {
-          return preValue > curValue ? preValue : curValue;
-                           })
-    }
-    console.log("a.max=", a.max());  
-    console.log("b.max=", b.max());
-    console.log("c.max=", c.max());
+    console.log("moodArray=", moodArray) 
+      
+    moodArray.sort((a, b) => {
+      return b.prop - a.prop;
+      });
+    console.log("moodArray_sorted=", moodArray);
       
     checkCookie()
     }, 100)  
