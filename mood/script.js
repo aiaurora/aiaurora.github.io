@@ -156,7 +156,6 @@ function recognizeFaces(){
         box = resizedDetections[0]['detection']['_box']  
         age = resizedDetections[0]['age']                // 年紀
         gender = resizedDetections[0]['gender']          // 性別  
-        mood = moodsArray[0].name
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
@@ -171,12 +170,12 @@ function recognizeFaces(){
                 type: "POST",
                 data: {
                   "value":gender
-                }
+                },
                 url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
                 data: {
                   "value":mood
-                },
+                }
               })
               
             end = start
