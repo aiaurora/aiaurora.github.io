@@ -201,8 +201,20 @@ function recognizeFaces(){
                 [key]: moods[key]
                 }
         })
-    console.log(a)  
-    console.log("moodmax： ",Math.max(a)) 
+    console.log("a=", a)  
+    var b = Object.keys(moods).map(key => {
+         return moods[key]
+        })
+    console.log("b=", b)  
+    
+    Array.prototype.max = function() {
+          return this.reduce(function(preValue, curValue,index,array) {
+          return preValue > curValue ? preValue : curValue;
+                           })
+    }
+    console.log("a.max=", a.max());
+    console.log("b.max=", b.max());
+    console.log("moods.max=", moods.max());
       
     checkCookie()
     }, 100)  
