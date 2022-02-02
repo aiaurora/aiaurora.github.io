@@ -132,7 +132,8 @@ function recognizeFaces(){
     const resizedDetections = faceapi.resizeResults(detections, displaySize)    
    
     // 心情與結果
-    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+    const minCinfidence = 0.8
+    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions(), minCinfidence).withFaceLandmarks().withFaceExpressions()
     const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)   
           
     start = new Date().getTime();
