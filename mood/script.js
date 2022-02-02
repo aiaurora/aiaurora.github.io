@@ -146,7 +146,7 @@ function recognizeFaces(){
     console.log("moodsArray=", moodsArray)       
     moodsArray.sort((a, b) => {
       return b.prop - a.prop;
-      });
+      })
     mood = moodsArray[0].name
     console.log("moodArray_sortedfirst=", mood)
           
@@ -156,7 +156,7 @@ function recognizeFaces(){
         box = resizedDetections[0]['detection']['_box']  
         age = resizedDetections[0]['age']                // 年紀
         gender = resizedDetections[0]['gender']          // 性別  
-      
+        mood = moodsArray[0].name
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
