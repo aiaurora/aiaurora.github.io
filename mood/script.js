@@ -131,9 +131,8 @@ function recognizeFaces(){
     const detections = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withAgeAndGender()          
     const resizedDetections = faceapi.resizeResults(detections, displaySize)    
    
-    // 心情與結果
-    const minCinfidence = 0.8
-    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions(), minCinfidence).withFaceLandmarks().withFaceExpressions()
+    // 心情與結果    
+    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
     const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)   
           
     start = new Date().getTime();
@@ -145,8 +144,11 @@ function recognizeFaces(){
         gender = resizedDetections[0]['gender']          // 性別  
         console.log("gender： ",gender)
         mood = detections2[0]['expressions']      // 心情 
+        mood1 = resizedDetections2[0]['expressions']      // 心情 
         console.log("mood0： ",detections2)
-        console.log("mood： ",mood)
+        console.log("mood： ",mood)        
+        console.log("mood1： ",mood1)
+      
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
