@@ -132,7 +132,7 @@ function recognizeFaces(){
     const resizedDetections = faceapi.resizeResults(detections, displaySize)    
    
     // 心情與結果    
-    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions().asSortedArray().sort(0.8, 1.0)
     const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)   
           
     start = new Date().getTime();
@@ -143,11 +143,9 @@ function recognizeFaces(){
         console.log("age： ",age)
         gender = resizedDetections[0]['gender']          // 性別  
         console.log("gender： ",gender)
-        mood = detections2[0]['expressions']      // 心情 
-        mood1 = resizedDetections2[0]['expressions']      // 心情 
+        mood = resizedDetections2[0]['expressions']      // 心情 
         console.log("mood0： ",detections2)
-        console.log("mood： ",mood)        
-        console.log("mood1： ",mood1)
+        console.log("mood： ",mood)  
       
         //console.log(start-end)
         if(start-end >=2000){
@@ -196,7 +194,7 @@ function recognizeFaces(){
     //faceapi.draw.drawDetections(canvas, resizedDetections2)
     //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
-      
+    
     checkCookie()
     }, 100)  
     
