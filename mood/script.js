@@ -141,7 +141,7 @@ function recognizeFaces(){
         box = resizedDetections[0]['detection']['_box']  
         age = resizedDetections[0]['age']                // 年紀        
         gender = resizedDetections[0]['gender']          // 性別  
-      
+        console.log("gender： ",gender)
         //mood = resizedDetections2[0]['expressions']      // 心情 
         console.log("mood： ",resizedDetections2)
         //console.log(start-end)
@@ -154,15 +154,15 @@ function recognizeFaces(){
                 data: {
                   "value":parseInt(age)
                 },
-                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
-                type: "POST",
-                data: {
-                  "value":gender
-                },
+                //url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
+                //type: "POST",
+                //data: {
+                //  "value":gender
+                //},
                 //url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                 //type: "POST",
                 //data: {
-                  "value":"none"
+                //  "value":"none"
                 //},
               })
               
