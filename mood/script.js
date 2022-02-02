@@ -143,7 +143,7 @@ function recognizeFaces(){
         gender = resizedDetections[0]['gender']          // 性別  
         console.log("gender： ",gender)
         //mood = resizedDetections2[0]['expressions']      // 心情 
-        console.log("mood： ",resizedDetections2)
+        console.log("mood： ",detections2)
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
