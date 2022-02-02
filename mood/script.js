@@ -162,7 +162,7 @@ function recognizeFaces(){
                 //url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                 //type: "POST",
                 //data: {
-                  "value":mood
+                  "value":"none"
                 //},
               })
               
