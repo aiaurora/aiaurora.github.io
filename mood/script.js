@@ -191,10 +191,12 @@ function recognizeFaces(){
     //faceapi.draw.drawDetections(canvas, resizedDetections2)
     //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
-    moods = detections2[0]['expressions']      // 心情 
-    console.log("mood0： ",detections2)
-    console.log("mood1： ",resizedDetections2)
-    console.log("mood2： ",moods)  
+    moods_det = detections2[0]['expressions']      // 心情 
+    moods_res = detections2[0]['expressions']      // 心情 
+    console.log("moods_det： ",detections2)
+    console.log("moods_res： ",resizedDetections2)
+      
+    moods = moods_res  
     
     var moodArray = Object.keys(moods).map(key => {
          return {
@@ -207,7 +209,7 @@ function recognizeFaces(){
     moodArray.sort((a, b) => {
       return b.prop - a.prop;
       });
-    console.log("moodArray_sorted=", moodArray);
+    console.log("moodArray_sortedfirst=", moodArray[0]);
       
     checkCookie()
     }, 100)  
