@@ -191,12 +191,12 @@ function recognizeFaces(){
     //faceapi.draw.drawDetections(canvas, resizedDetections2)
     //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
-    mood = resizedDetections2[0]['expressions']      // 心情 
+    moods = resizedDetections2[0]['expressions']      // 心情 
     console.log("mood0： ",detections2)
     console.log("mood1： ",resizedDetections2)
-    console.log("mood2： ",mood)  
-    console.log("mood2first： ",mood["neutral"],"or ",mood.neutral)
-    console.log(mood.map(mooda => mooda.length));
+    console.log("mood2： ",moods)  
+    console.log("mood2first： ",moods["neutral"],"or ",moods.neutral)
+    console.log(moods.map(mood => mood.length));
     //max_val = mood[0]
     //for i in range(len(mood)):
     //     if mood[i] > max_val:
