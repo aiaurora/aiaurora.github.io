@@ -139,11 +139,13 @@ function recognizeFaces(){
     
     if(resizedDetections.length >= 1){
         box = resizedDetections[0]['detection']['_box']  
-        age = resizedDetections[0]['age']                // 年紀        
+        age = resizedDetections[0]['age']                // 年紀
+        console.log("age： ",age)
         gender = resizedDetections[0]['gender']          // 性別  
         console.log("gender： ",gender)
-        //mood = resizedDetections2[0]['expressions']      // 心情 
-        console.log("mood： ",detections2)
+        mood = detections2[0]['expressions']      // 心情 
+        console.log("mood0： ",detections2)
+        console.log("mood： ",mood)
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
