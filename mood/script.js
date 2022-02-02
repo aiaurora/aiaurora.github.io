@@ -196,7 +196,9 @@ function recognizeFaces(){
     console.log("mood1： ",resizedDetections2)
     console.log("mood2： ",moods)  
     console.log("mood2first： ",moods["neutral"],"or ",moods.neutral)
-    console.log(moods.map(mood => mood.length));
+    moodsArray = new Array();
+    for(x in moods) moodsArray[moodsArray.property]=x;
+    console.log("mood2max： ",Math.max(moodsArray));
     //max_val = mood[0]
     //for i in range(len(mood)):
     //     if mood[i] > max_val:
