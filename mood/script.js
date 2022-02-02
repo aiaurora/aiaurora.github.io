@@ -133,16 +133,29 @@ function recognizeFaces(){
    
     // 心情與結果    
     const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()   
-    const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)   
+    const resizedDetections2 = faceapi.resizeResults(detections2, displaySize) 
+    moods = detections2[0]['expressions']      // 心情 
+    //moods = detections2[0]['expressions']      // 心情 
+        
+    var moodsArray = Object.keys(moods).map(key => {
+         return {
+                "name": key,
+                "prop": moods[key]
+                }
+        })
+    console.log("moodsArray=", moodsArray)       
+    moodsArray.sort((a, b) => {
+      return b.prop - a.prop;
+      });
+    mood = moodsArray[0].name
+    console.log("moodArray_sortedfirst=", mood)
           
     start = new Date().getTime();
     
     if(resizedDetections.length >= 1){
         box = resizedDetections[0]['detection']['_box']  
         age = resizedDetections[0]['age']                // 年紀
-        console.log("age： ",age)
         gender = resizedDetections[0]['gender']          // 性別  
-        console.log("gender： ",gender)
       
         //console.log(start-end)
         if(start-end >=2000){
@@ -159,11 +172,11 @@ function recognizeFaces(){
                 data: {
                   "value":gender
                 }
-                //url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
-                //type: "POST",
-                //data: {
-                //  "value":"none"
-                //},
+                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
+                type: "POST",
+                data: {
+                  "value":mood
+                },
               })
               
             end = start
@@ -191,25 +204,7 @@ function recognizeFaces(){
     //faceapi.draw.drawDetections(canvas, resizedDetections2)
     //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
     faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
-    moods_det = detections2[0]['expressions']      // 心情 
-    moods_res = detections2[0]['expressions']      // 心情 
-    console.log("moods_det： ",detections2)
-    console.log("moods_res： ",resizedDetections2)
-      
-    moods = moods_res  
-    
-    var moodArray = Object.keys(moods).map(key => {
-         return {
-                "name": key,
-                "prop": moods[key]
-                }
-        })
-    console.log("moodArray=", moodArray) 
-      
-    moodArray.sort((a, b) => {
-      return b.prop - a.prop;
-      });
-    console.log("moodArray_sortedfirst=", moodArray[0]);
+   
       
     checkCookie()
     }, 100)  
