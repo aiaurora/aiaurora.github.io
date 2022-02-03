@@ -144,7 +144,7 @@ function recognizeFaces(){
                 data: {
                   "value":parseInt(age)
                 },                
-              })
+              }),
             $.ajax({               
                 url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
