@@ -72,11 +72,7 @@ function checkCookie()
 // 先讀取完模型再開啟攝影機
 Promise.all([
     faceapi.nets.tinyFaceDetector.loadFromUri('./models'),     // 偵測臉部 
-    faceapi.nets.ageGenderNet.loadFromUri('./models'),         // 年紀性別 
-
-    faceapi.nets.faceLandmark68Net.loadFromUri('./models'), 
-    faceapi.nets.faceRecognitionNet.loadFromUri('./models'),   
-    faceapi.nets.faceExpressionNet.loadFromUri('./models'),    // 心情
+    faceapi.nets.ageGenderNet.loadFromUri('./models'),         // 年紀性別
     
     console.log("load models OK"),
     mask.style.display = "block",
@@ -130,10 +126,6 @@ function recognizeFaces(){
     // 年紀性別與結果
     const detections = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withAgeAndGender()          
     const resizedDetections = faceapi.resizeResults(detections, displaySize)    
-   
-    // 心情與結果
-    const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-    const resizedDetections2 = faceapi.resizeResults(detections2, displaySize)   
     
     start = new Date().getTime();
     
@@ -166,11 +158,7 @@ function recognizeFaces(){
     mask.style.display = "none"
     loadImg.style.display = "none"
     canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-    faceapi.draw.drawDetections(canvas, resizedDetections)
-    
-    //faceapi.draw.drawDetections(canvas, resizedDetections2)
-    //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
-    faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)
+    faceapi.draw.drawDetections(canvas, resizedDetections)   
       
     var dis_y = (video1.offsetHeight-video1.offsetWidth/1.337)/2   // 從左上角增加的距離
     var dis_x = (video1.offsetWidth-video1.offsetHeight*1.337)/2
