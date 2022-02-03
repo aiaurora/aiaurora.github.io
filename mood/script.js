@@ -156,9 +156,11 @@ function recognizeFaces(){
         box = resizedDetections[0]['detection']['_box']  
         age = resizedDetections[0]['age']                // 年紀
         gender = resizedDetections[0]['gender']          // 性別
+      
         console.log("gender =", gender)
         test = String(gender)
         console.log("genderString =", test)
+      
         //console.log(start-end)
         if(start-end >=2000){
           
@@ -170,10 +172,10 @@ function recognizeFaces(){
                 data: {
                   "value":parseInt(age)
                 },
-                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
+                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gen/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
                 data: {
-                  "value":String(mood)
+                  "value":test
                 },
                 url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
