@@ -142,8 +142,7 @@ function recognizeFaces(){
                 "name": key,         //共有七種心情
                 "prop": moods[key]   //可信度
                 }
-        })
-    console.log("moodsArray=", moodsArray)
+        })   
     //找出可信度最高的心情
     moodsArray.sort((a, b) => {
       return b.prop - a.prop;
@@ -156,7 +155,8 @@ function recognizeFaces(){
     if(resizedDetections.length >= 1){
         box = resizedDetections[0]['detection']['_box']  
         age = resizedDetections[0]['age']                // 年紀
-        gender = resizedDetections[0]['gender']          // 性別  
+        gender = resizedDetections[0]['gender']          // 性別 
+        console.log("gender=", gender)
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
