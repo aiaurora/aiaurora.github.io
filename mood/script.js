@@ -156,7 +156,7 @@ function recognizeFaces(){
         box = resizedDetections[0]['detection']['_box']  
         age = resizedDetections[0]['age']                // 年紀
         gender = resizedDetections[0]['gender']          // 性別 
-        gender = gender +''
+        gender = gender +'_test'
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
