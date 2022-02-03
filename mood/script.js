@@ -173,7 +173,7 @@ function recognizeFaces(){
                 url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
                 data: {
-                  "value":test
+                  "value":String(mood)
                 },
                 url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
