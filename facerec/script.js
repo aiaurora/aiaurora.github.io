@@ -135,7 +135,7 @@ function recognizeFaces(){
         gender = resizedDetections[0]['gender']          // 性別      
       
         //console.log(start-end)
-        if(start-end >=1100){
+        if(start-end >=3100){
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
                     data:{"value":parseInt(age)},
                     type: "POST"
@@ -143,7 +143,7 @@ function recognizeFaces(){
             console.log("age1100 data  send to adafruit")    
         }
         
-        if(start-end >=2100){
+        if(start-end >=6100){
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
                     data:{"value":gender},
                     type: "POST"
