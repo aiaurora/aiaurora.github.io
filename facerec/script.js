@@ -150,13 +150,13 @@ function recognizeFaces(){
                   "value":gender
                 }
               })
-        */  
-            $.get("https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,                
-                  {"value":parseInt(age)})
-            console.log("age data  send to adafruit")
-            $.get("https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
-                  {"value":gender})
-            console.log("gender data send to adafruit")
+        */ 
+            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":parseInt(age)},type: “POST”,dataType:’json’,success:CallBack,error:function(er){BackErr(er);}})
+            console.log("age2 data  send to adafruit")
+            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":gender},type: “POST”,dataType:’json’,success:CallBack,error:function(er){BackErr(er);}})
+            console.log("gender2 data send to adafruit")
           
             end = start
         }        
