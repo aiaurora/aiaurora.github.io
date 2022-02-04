@@ -153,16 +153,12 @@ function recognizeFaces(){
         */ 
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
                     data:{"value":parseInt(age)},
-                    type: "POST",
-                    success:CallBack,
-                    error:function(er){BackErr(er)}
+                    type: "POST"
                    })
             console.log("age2 data  send to adafruit")
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
                     data:{"value":gender},
-                    type: "POST",
-                    success:CallBack,
-                    error:function(er){BackErr(er)}
+                    type: "POST"
                    })
             console.log("gender2 data send to adafruit")
           
