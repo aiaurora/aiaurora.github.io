@@ -157,28 +157,25 @@ function recognizeFaces(){
         age = resizedDetections[0]['age']                // 年紀
         gender = resizedDetections[0]['gender']          // 性別
             
-        //console.log(start-end)
-        if(start-end >=2000){          
-           console.log("send to adafruit")
-           
-            $.ajax({
-                //url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
-                //type: "POST",
-                //data: {
-                //  "value":parseInt(age)
-                //},
-                //url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gen/data?X-AIO-Key="+inputtext.value,
-                //type: "POST",
-                //data: {
-                //  "value":gender
-                //},
-                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
-                type: "POST",
-                data: {
-                  "value":String(mood)
-                },
-              })
-              
+        //console.log(start-end)         //受限AIO每分鐘上傳30次  
+        if(start-end >=2000){ 
+          /*
+            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":parseInt(age)},
+                    type: "POST"
+                   })
+            console.log("age data  send to adafruit")  
+            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":gender},
+                    type: "POST"
+                   })
+            console.log("gender data send to adafruit") 
+          */
+            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":mood},
+                    type: "POST"
+                   })
+            console.log("mood data send to adafruit")
             end = start
         }        
     }
