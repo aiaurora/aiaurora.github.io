@@ -135,7 +135,7 @@ function recognizeFaces(){
         gender = resizedDetections[0]['gender']          // 性別      
       
         //console.log(start-end)          //受限AIO每分鐘上傳30次   
-        if(start-end >=4000){
+        if(start-end >=4500){
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
                     data:{"value":parseInt(age)},
                     type: "POST"
