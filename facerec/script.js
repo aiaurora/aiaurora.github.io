@@ -137,7 +137,7 @@ function recognizeFaces(){
         //console.log(start-end)
         if(start-end >=2000){
            console.log("send to adafruit")
-           
+        /*   
             $.ajax({
                 url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
@@ -150,7 +150,12 @@ function recognizeFaces(){
                   "value":gender
                 }
               })
-              
+        */  
+            $.get("https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,                
+                  {"value":parseInt(age)})            
+            $.get("https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
+                  {"value":gender})
+          
             end = start
         }        
     }
