@@ -152,7 +152,7 @@ function recognizeFaces(){
               })
         */  
             $.get("https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,                
-                  {"value":parseInt(age)})            
+                  {"value":parseInt(age)});            
             $.get("https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
                   {"value":gender})
           
