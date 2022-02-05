@@ -1,8 +1,8 @@
 // 定義名稱。要與 images 資料夾內相同名稱 
 //var labels = prompt("請輸入名稱並以逗號隔開人名:","Teddy,Chuan").toString().split(",")
-var labels = ["Ralph","Chuan"]  //要和index.html一致
+var labels = ["Teddy","Chuan"]  //要和index.html一致
 console.log("Labels：", labels)
-var username = prompt("請輸入 AIO 使用者名稱:","hylin")
+//var username = prompt("請輸入 AIO 使用者名稱:","hylin")
 const video1 = document.getElementById('inputVideo')
 const conDev = document.getElementById('connDiv') 
 const discon = document.getElementById('disconnBtn')
@@ -10,6 +10,8 @@ const con = document.getElementById('connBtn')
 const idn = document.getElementById('identify')
 const connBtnImg = document.getElementById('connBtnImg')
 const inputtext = document.getElementById('inputtext')
+const inputtextUser = document.getElementById('inputtextUser')  //新增的
+var username = inputtextUser   //新增的
 
 // 讓輸入框圓角一點  需要 jquery-ui.min.js 和 jquery-ui.min.css
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
