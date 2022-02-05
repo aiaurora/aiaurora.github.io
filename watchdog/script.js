@@ -197,12 +197,14 @@ function loadLabel() {
           const descriptions = []
           for (let i = 1; i <= 3; i++) {
               try {
-                  img = await faceapi.fetchImage(`images/${label}/${i}.jpg`)
+                  //img = await faceapi.fetchImage(`images/${label}/${i}.jpg`)
+                  img = await faceapi.fetchImage('images/${label}/${i}.jpg')
               }
               catch (e) {
                   console.log("換PNG啦")
                   try {
-                      img = await faceapi.fetchImage(`images/${label}/${i}.png`)
+                      //img = await faceapi.fetchImage(`images/${label}/${i}.png`)
+                      img = await faceapi.fetchImage('images/${label}/${i}.png')
                   }
                   catch (err) {
                       console.log("錯誤啊!!!")
