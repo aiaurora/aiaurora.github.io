@@ -158,11 +158,11 @@ async function canRecognizeFaces(sta){
         })
 
         results.forEach((result,i) =>{
-            console.log("161最接近的是:",results[i]["label"])     // 顯示所有偵測到的名稱
+            console.log("161.最接近存檔照片的是:",results[i]["label"])     // 顯示所有偵測到的名稱(最有可能，但不一定是本人，由*.py再做篩選)
             lab = parseFloat(labels.indexOf(results[i]["label"]))
             dis = parseFloat(results[i]["distance"])
             //console.log(labels.indexOf(results[i]["label"]))
-            console.log("165label:",lab,"distance:",dis)
+            console.log("165.label:",lab,"distance:",dis)
             //sendMsg(results[i]["label"]+":"+results[i]["distance"])
 
             $.ajax({    //已用inputtextUser.value取代username
