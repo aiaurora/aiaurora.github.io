@@ -190,10 +190,11 @@ $('#identify').click((e) => {
 
 function loadLabel() {
   var labels_len = labels.length;
+  console.log("Labels.len：",labels_len)
   var succ = true;
   return Promise.all(
       labels.map(async (label) => {
-          console.log(label)
+          console.log("Label：",label)
           const descriptions = []
           for (let i = 1; i <= 3; i++) {
               try {
