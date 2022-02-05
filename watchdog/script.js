@@ -190,17 +190,17 @@ $('#identify').click((e) => {
 
 function loadLabel() {
   var labels_len = labels.length;
-  console.log("Labels數量：",labels_len)
+  console.log("193.Labels數量：",labels_len)
   var succ = true;
   return Promise.all(
       labels.map(async (label) => {
-          console.log("Label名稱：",label)
+          console.log("197.Label名稱：",label)
           const descriptions = []
           for (let i = 1; i <= 3; i++) {
               try {
                   //img = await faceapi.fetchImage(`./images/${label}/${i}.jpg`)  //反引號(back-tick)
                   img = await faceapi.fetchImage('./images/'+label+'/'+i+'.jpg')
-                  console.log('./images/'+label+'/'+i+'.jpg')
+                  console.log('203.照片位置./images/'+label+'/'+i+'.jpg')
               }
               catch (e) {
                   console.log("換PNG啦")
