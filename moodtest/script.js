@@ -112,12 +112,7 @@ async function startVideo(){
   }
 
 //3
-var labeledDescriptors;
-var faceMatcher;
 var canvas;
-var detections;
-var resizedDetections;
-var results;
 var init = false;
 
 var displaySize;
@@ -134,7 +129,7 @@ function  changeCanvasSize(){       //11
 
 async function recognizeFaces(sta){      //4+async+sta
     if(init == false){     //5
-      const canvas = faceapi.createCanvasFromMedia(video1)
+      canvas = faceapi.createCanvasFromMedia(video1)
       document.body.append(canvas)
       mask.style.display = "none"       //12
       loadImg.style.display = "none"    //13
