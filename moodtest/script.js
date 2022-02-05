@@ -111,8 +111,14 @@ async function startVideo(){
     recognizeFaces(0)   //2+0
   }
 
-
-var init = false;    //3
+//3
+var labeledDescriptors;
+var faceMatcher;
+var canvas;
+var detections;
+var resizedDetections;
+var results;
+var init = false;
 
 function wait(ms){ 
     var start = new Date().getTime(); 
