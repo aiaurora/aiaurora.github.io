@@ -120,16 +120,6 @@ var resizedDetections;
 var results;
 var init = false;
 
-function wait(ms){ 
-    var start = new Date().getTime(); 
-    var end = start; 
-    while(end < start + ms) { 
-    end = new Date().getTime(); 
-    } 
-}
-
-var start = new Date().getTime();
-var end = new Date().getTime()-2000;
 var displaySize;
 
 
@@ -155,8 +145,7 @@ async function recognizeFaces(sta){      //4+async+sta
       displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }
       faceapi.matchDimensions(canvas, displaySize)
       init = true   //6
-    }
- 
+    } 
 
     if(init == true && sta==1){     //7
       // 年紀性別與結果
@@ -181,24 +170,18 @@ async function recognizeFaces(sta){      //4+async+sta
         })
       mood = moodsArray[0].name
       console.log("moodArray_sortedfirst=", mood)
-          
-      start = new Date().getTime();
-    
+                  
       if(resizedDetections.length >= 1){
           box = resizedDetections[0]['detection']['_box']  
           age = resizedDetections[0]['age']                // 年紀
           gender = resizedDetections[0]['gender']          // 性別
             
-          //console.log(start-end)         //受限AIO每分鐘上傳30次  
-          if(start-end >=2000){             
-              $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
-                      data:{"value":mood},
-                      type: "POST"
-                     })
-              console.log("mood data send to adafruit")
-              end = start
-          }        
-      }
+          $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
+                  data:{"value":mood},
+                  type: "POST"
+                 })
+          console.log("mood data send to adafruit")
+          }  
     
       mask.style.display = "none"
       loadImg.style.display = "none"
