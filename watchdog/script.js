@@ -200,6 +200,7 @@ function loadLabel() {
               try {
                   //img = await faceapi.fetchImage(`./images/${label}/${i}.jpg`)  //反引號(back-tick)
                   img = await faceapi.fetchImage('./images/'+label+'/'+i+'.jpg')
+                  console.log("img：",img)
               }
               catch (e) {
                   console.log("換PNG啦")
@@ -213,6 +214,7 @@ function loadLabel() {
                   }
               }
               if (succ) {
+                  console.log("img：217")
                   const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
                   descriptions.push(detections.descriptor)
               }
