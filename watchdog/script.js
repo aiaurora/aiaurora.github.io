@@ -11,7 +11,6 @@ const idn = document.getElementById('identify')
 const connBtnImg = document.getElementById('connBtnImg')
 const inputtext = document.getElementById('inputtext')
 const inputtextUser = document.getElementById('inputtextUser')  //新增的
-var username = inputtextUser   //新增的
 
 // 讓輸入框圓角一點  需要 jquery-ui.min.js 和 jquery-ui.min.css
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
@@ -154,8 +153,8 @@ async function canRecognizeFaces(sta){
             console.log(lab+dis)
             //sendMsg(results[i]["label"]+":"+results[i]["distance"])
 
-            $.ajax({
-                url: "https://io.adafruit.com/api/v2/"+username+"/feeds/door/data?X-AIO-Key="+inputtext.value,
+            $.ajax({    //已用inputtextUser.value取代username
+                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/door/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
                 data: {
                   "value":lab+dis
