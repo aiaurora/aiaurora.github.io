@@ -11,6 +11,16 @@ const idn = document.getElementById('identify')  //1
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
 
 
+setInterval(async () => {      //13
+    inputtext.style.width = video1.offsetWidth.toString()+"px"
+    inputtext.style.height = video1.offsetHeight.toString()/8+"px"
+    inputtextUser.style.width = video1.offsetWidth.toString()+"px"  //新增的
+    inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"  //新增的
+    idn.style.height = video1.offsetHeight.toString()/8+"px"
+    idn.style.fontSize = video1.offsetHeight.toString()/15+"px"
+    checkCookie()
+},100)
+
 // 儲存 cookie 的值(cookie的名字、cookie的值、儲存的天數)
 function setCookie(cname,cvalue,exdays)
 {
@@ -116,25 +126,31 @@ var start = new Date().getTime();
 var end = new Date().getTime()-2000;
 var displaySize;
 
+
+function  changeCanvasSize(){       //11
+    setInterval(async () => {
+        canvas.style.width = video1.offsetWidth.toString()+"px"
+        canvas.style.height = video1.offsetHeight.toString()+"px"
+        canvas.style.left = getPosition(video1)["x"] + "px";
+        canvas.style.top = getPosition(video1)["y"] + "px";
+    }, 100)
+}
+
 async function recognizeFaces(sta){      //4+async+sta
     if(init == false){     //5
       const canvas = faceapi.createCanvasFromMedia(video1)
       document.body.append(canvas)
+      mask.style.display = "none"       //12
+      loadImg.style.display = "none"    //13
+      changeCanvasSize()                //14
+        // 將 canvas 的位置設定成與影像一樣
       canvas.style.left = getPosition(video1)["x"] + "px";
       canvas.style.top = getPosition(video1)["y"] + "px";
       displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }
       faceapi.matchDimensions(canvas, displaySize)
       init = true   //6
     }
-
-  setInterval(async () => {
-    inputtext.style.width = video1.offsetWidth.toString()+"px"
-    inputtext.style.height = video1.offsetHeight.toString()/8+"px"
-    inputtextUser.style.width = video1.offsetWidth.toString()+"px"
-    inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"
-    displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }
-    faceapi.matchDimensions(canvas, displaySize)        
-   
+ 
 
     if(init == true && sta==1){     //7
       // 年紀性別與結果
@@ -199,9 +215,7 @@ async function recognizeFaces(sta){      //4+async+sta
       //faceapi.draw.drawDetections(canvas, resizedDetections2)
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)     
-    } 
-      checkCookie()
-  }, 100)  
+    }    
 }    
 
 
