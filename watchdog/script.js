@@ -47,19 +47,24 @@ function getCookie(cname)
 
 var first = false  // 是否初始化網頁
 var last_key = getCookie("key")
+var last_name = getCookie("name")     //由此開始將年齡辨識的程式部分copy過來
 
 // 確認 cookie 的值
 function checkCookie()
 {
   var key = ""
+  var name = ""
   if(first == false){
     // 從 Cookie 中取值
     key = getCookie("key");
     inputtext.value = key
+    name = getCookie("name");
+    inputtextUser.value = name
     first = true
   }
 
   key = inputtext.value
+  name = inputtextUser.value
 
   //if (key != "" && key != null)
   if(key != last_key)
@@ -67,7 +72,15 @@ function checkCookie()
     setCookie("key",key,30);
     console.log("change:",key)
   }
+
+  if(name != last_name)
+  {
+    setCookie("name",name,30);
+    console.log("change:",name)
+  }
+
   last_key = key
+  last_name = name
 }
 
 Promise.all([
