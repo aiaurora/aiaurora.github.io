@@ -17,6 +17,8 @@ $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield
 setInterval(async () => {
     inputtext.style.width = video1.offsetWidth.toString()+"px"
     inputtext.style.height = video1.offsetHeight.toString()/8+"px"
+    inputtextUser.style.width = video1.offsetWidth.toString()+"px"  //新增的
+    inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"  //新增的
     idn.style.height = video1.offsetHeight.toString()/8+"px"
     idn.style.fontSize = video1.offsetHeight.toString()/15+"px"
     checkCookie()
@@ -158,11 +160,11 @@ async function canRecognizeFaces(sta){
         })
 
         results.forEach((result,i) =>{
-            console.log("161.最接近存檔照片的是:",results[i]["label"])     // 顯示所有偵測到的名稱(最有可能，但不一定是本人，由*.py再做篩選)
+            console.log("163.最接近存檔照片的是:",results[i]["label"])     // 顯示所有偵測到的名稱(最有可能，但不一定是本人，由*.py再做篩選)
             lab = parseFloat(labels.indexOf(results[i]["label"]))
             dis = parseFloat(results[i]["distance"])
             //console.log(labels.indexOf(results[i]["label"]))
-            console.log("165.label:",lab,"distance:",dis)
+            console.log("167.label:",lab,"distance:",dis)
             //sendMsg(results[i]["label"]+":"+results[i]["distance"])
 
             $.ajax({    //已用inputtextUser.value取代username
@@ -190,11 +192,11 @@ $('#identify').click((e) => {
 
 function loadLabel() {
   var labels_len = labels.length;
-  console.log("193.Labels數量：",labels_len)
+  console.log("195.Labels數量：",labels_len)
   var succ = true;
   return Promise.all(
       labels.map(async (label) => {
-          console.log("197.Label名稱：",label)
+          console.log("199.Label名稱：",label)
           const descriptions = []
           for (let i = 1; i <= 3; i++) {
               try {
