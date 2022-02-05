@@ -46,7 +46,7 @@ function getCookie(cname)
 
 var first = false  // 是否初始化網頁
 var last_key = getCookie("key")
-var last_name = getCookie("name")     //由此開始將年齡辨識的程式部分copy過來
+var last_name = getCookie("name")     //由此開始將年齡辨識的getCookie程式部分copy過來
 
 // 確認 cookie 的值
 function checkCookie()
@@ -158,7 +158,7 @@ async function canRecognizeFaces(sta){
         })
 
         results.forEach((result,i) =>{
-            console.log(results[i]["label"])     // 顯示所有偵測到的名稱
+            console.log("161:",results[i]["label"])     // 顯示所有偵測到的名稱
             lab = parseFloat(labels.indexOf(results[i]["label"]))
             dis = parseFloat(results[i]["distance"])
             //console.log(labels.indexOf(results[i]["label"]))
@@ -190,11 +190,11 @@ $('#identify').click((e) => {
 
 function loadLabel() {
   var labels_len = labels.length;
-  console.log("Labels.len：",labels_len)
+  console.log("Labels數量：",labels_len)
   var succ = true;
   return Promise.all(
       labels.map(async (label) => {
-          console.log("Label：",label)
+          console.log("Label名稱：",label)
           const descriptions = []
           for (let i = 1; i <= 3; i++) {
               try {
@@ -216,7 +216,6 @@ function loadLabel() {
               if (succ) {
                   const detections = await faceapi.detectSingleFace(img).withFaceLandmarks().withFaceDescriptor()
                   descriptions.push(detections.descriptor)
-                  console.log("succ：219")
               }
           }
           labels_len--
