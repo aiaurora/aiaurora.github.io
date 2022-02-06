@@ -120,8 +120,8 @@ function recognizeFaces(sta){
     document.body.append(canvas)
     canvas.style.left = getPosition(video1)["x"] + "px";
     canvas.style.top = getPosition(video1)["y"] + "px";
-    displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }
-    faceapi.matchDimensions(canvas, displaySize)
+    //displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }  0206
+    //faceapi.matchDimensions(canvas, displaySize)  0206
   
     setInterval(async () => {
       inputtext.style.width = video1.offsetWidth.toString()+"px"
