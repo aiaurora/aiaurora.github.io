@@ -101,7 +101,7 @@ async function startVideo(){
     recognizeFaces(0)  //空->0
   }
 
-
+/*
 function wait(ms){ 
     var start = new Date().getTime(); 
     var end = start; 
@@ -112,6 +112,7 @@ function wait(ms){
 
 var start = new Date().getTime();
 var end = new Date().getTime()-2000;
+*/
 var displaySize;
  //多了參數sta
 function recognizeFaces(sta){  
@@ -152,7 +153,7 @@ function recognizeFaces(sta){
       mood = moodsArray[0].name
       console.log("moodArray_sortedfirst=", mood)
           
-      start = new Date().getTime();
+      //start = new Date().getTime();
     
       if(resizedDetections.length >= 1){
           box = resizedDetections[0]['detection']['_box']  
@@ -179,7 +180,8 @@ function recognizeFaces(sta){
                     type: "POST"
                    })
               console.log("mood data send to adafruit")
-              end = start
+              sta = 0
+              //end = start
           }        
       }
     
