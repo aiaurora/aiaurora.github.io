@@ -154,7 +154,7 @@ function recognizeFaces(sta){
       console.log("moodArray_sortedfirst=", mood)
           
       //start = new Date().getTime();
-    
+      clearInterval()  //清除setInterval
       if(resizedDetections.length >= 1){
           box = resizedDetections[0]['detection']['_box']  
           age = resizedDetections[0]['age']                // 年紀
