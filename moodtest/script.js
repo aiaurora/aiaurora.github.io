@@ -146,9 +146,9 @@ function recognizeFaces(sta){
       //start = new Date().getTime();
       
       if(resizedDetections.length >= 1){
-          box = resizedDetections[0]['detection']['_box']  
-          age = resizedDetections[0]['age']                // 年紀
-          gender = resizedDetections[0]['gender']          // 性別
+          //測box = resizedDetections[0]['detection']['_box']  
+          //測age = resizedDetections[0]['age']                // 年紀
+          //測gender = resizedDetections[0]['gender']          // 性別
             
           //console.log(start-end)         //受限AIO每分鐘上傳30次  
           //if(start-end >=2000){ 
@@ -167,26 +167,26 @@ function recognizeFaces(sta){
              })
             mood = moodsArray[0].name
             console.log("moodArray_sortedfirst=", mood)
-            
-            /*
-              $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
-                    data:{"value":parseInt(age)},
-                    type: "POST"
-                   })
-              console.log("age data  send to adafruit")  
-              $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
-                    data:{"value":gender},
-                    type: "POST"
-                   })
-              console.log("gender data send to adafruit") 
-            */
-              $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
+            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                     data:{"value":mood},
                     type: "POST"
                    })
-              console.log("mood data send to adafruit")
-              sta = 0
-              //end = start
+            console.log("mood data send to adafruit")
+            sta = 0
+            /*
+            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":parseInt(age)},
+                    type: "POST"
+                   })
+            console.log("age data  send to adafruit")  
+            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":gender},
+                    type: "POST"
+                   })
+            console.log("gender data send to adafruit") 
+            */
+              
+            //end = start
           }        
       }
     
