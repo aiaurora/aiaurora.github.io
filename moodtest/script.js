@@ -181,7 +181,7 @@ async function recognizeFaces(sta){
                    })
               console.log("mood data send to adafruit")
               sta = 0
-              wait(100)
+              //wait(100)
               //end = start
           }        
       }
