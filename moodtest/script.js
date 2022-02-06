@@ -101,7 +101,7 @@ async function startVideo(){
     recognizeFaces(0)  //空->0
   }
 
-/*
+
 function wait(ms){ 
     var start = new Date().getTime(); 
     var end = start; 
@@ -109,7 +109,7 @@ function wait(ms){
     end = new Date().getTime(); 
     } 
 }
-
+/*
 var start = new Date().getTime();
 var end = new Date().getTime()-2000;
 */
@@ -181,6 +181,7 @@ function recognizeFaces(sta){
                    })
               console.log("mood data send to adafruit")
               sta = 0
+              wait(100)
               //end = start
           }        
       }
