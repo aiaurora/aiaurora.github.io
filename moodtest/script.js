@@ -11,16 +11,6 @@ const idn = document.getElementById('identify')  //1
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
 
 
-setInterval(async () => {      //13
-    inputtext.style.width = video1.offsetWidth.toString()+"px"
-    inputtext.style.height = video1.offsetHeight.toString()/8+"px"
-    inputtextUser.style.width = video1.offsetWidth.toString()+"px"  //新增的
-    inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"  //新增的
-    idn.style.height = video1.offsetHeight.toString()/8+"px"
-    idn.style.fontSize = video1.offsetHeight.toString()/15+"px"
-    checkCookie()
-},100)
-
 // 儲存 cookie 的值(cookie的名字、cookie的值、儲存的天數)
 function setCookie(cname,cvalue,exdays)
 {
@@ -108,42 +98,37 @@ async function startVideo(){
       video1.srcObject = stream;
     })
     await video1.play();
-    recognizeFaces(0)   //2+0
+    recognizeFaces(0)  //空->0
   }
 
-//3
-//var canvas;
-//var init = false;
 
-var displaySize;
-
-
-function  changeCanvasSize(){       //11
-    setInterval(async () => {
-        canvas.style.width = video1.offsetWidth.toString()+"px"
-        canvas.style.height = video1.offsetHeight.toString()+"px"
-        canvas.style.left = getPosition(video1)["x"] + "px";
-        canvas.style.top = getPosition(video1)["y"] + "px";
-    }, 100)
+function wait(ms){ 
+    var start = new Date().getTime(); 
+    var end = start; 
+    while(end < start + ms) { 
+    end = new Date().getTime(); 
+    } 
 }
 
-async function recognizeFaces(sta){      //4+async+sta
-    //if(init == false){     //5
-      const canvas = faceapi.createCanvasFromMedia(video1)
-      document.body.append(canvas)
-      mask.style.display = "none"       //12
-      loadImg.style.display = "none"    //13
-      // 將 canvas 的位置設定成與影像一樣
-      changeCanvasSize()                //14
-      
-      //canvas.style.left = getPosition(video1)["x"] + "px";
-      //canvas.style.top = getPosition(video1)["y"] + "px";
+var start = new Date().getTime();
+var end = new Date().getTime()-2000;
+var displaySize;
+ //多了參數sta
+function recognizeFaces(sta){  
+    const canvas = faceapi.createCanvasFromMedia(video1)
+    document.body.append(canvas)
+    canvas.style.left = getPosition(video1)["x"] + "px";
+    canvas.style.top = getPosition(video1)["y"] + "px";
+    displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }
+    faceapi.matchDimensions(canvas, displaySize)
+  
+    setInterval(async () => {
+      inputtext.style.width = video1.offsetWidth.toString()+"px"
+      inputtext.style.height = video1.offsetHeight.toString()/8+"px"
+      inputtextUser.style.width = video1.offsetWidth.toString()+"px"
+      inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"
       displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }
       faceapi.matchDimensions(canvas, displaySize)
-      //init = true   //6
-    //} 
-
-    //if(init == true && sta==1){     //7
       // 年紀性別與結果
       const detections = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withAgeAndGender()          
       const resizedDetections = faceapi.resizeResults(detections, displaySize)    
@@ -166,20 +151,38 @@ async function recognizeFaces(sta){      //4+async+sta
         })
       mood = moodsArray[0].name
       console.log("moodArray_sortedfirst=", mood)
-                  
+          
+      start = new Date().getTime();
+    
       if(resizedDetections.length >= 1){
           box = resizedDetections[0]['detection']['_box']  
           age = resizedDetections[0]['age']                // 年紀
           gender = resizedDetections[0]['gender']          // 性別
-        //if(init == true && sta == 1){     //7   
-        if(sta == 1){     //7   
-          $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
-                  data:{"value":mood},
-                  type: "POST"
-                 })
-          console.log("mood data send to adafruit")
-        }    //7 
-      } 
+            
+          //console.log(start-end)         //受限AIO每分鐘上傳30次  
+          //if(start-end >=2000){ 
+          if(sta == 1){     //7
+            /*
+              $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":parseInt(age)},
+                    type: "POST"
+                   })
+              console.log("age data  send to adafruit")  
+              $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":gender},
+                    type: "POST"
+                   })
+              console.log("gender data send to adafruit") 
+            */
+              $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":mood},
+                    type: "POST"
+                   })
+              console.log("mood data send to adafruit")
+              end = start
+          }        
+      }
+    
       mask.style.display = "none"
       loadImg.style.display = "none"
       canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
@@ -191,19 +194,20 @@ async function recognizeFaces(sta){      //4+async+sta
       resizedDetections.forEach(detection => {
           canvas.style.left = getPosition(video1)["x"] + "px";
           canvas.style.top = getPosition(video1)["y"] + "px";
-          const { age, gender, genderProbability } = detection
+         const { age, gender, genderProbability } = detection
           new faceapi.draw.DrawTextField([
-              `${parseInt(age, 10)} years old`,
+             `${parseInt(age, 10)} years old`,
               `${gender} (${parseInt(genderProbability * 100, 10)})`
-              ], detection.detection.box.topRight).draw(canvas)
-          }) 
+             ], detection.detection.box.topRight).draw(canvas)
+        }) 
       
       //faceapi.draw.drawDetections(canvas, resizedDetections2)
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)     
-    //}   //7  
-}    
-
+      
+      checkCookie()
+    }, 100) 
+}
 
 $('#identify').click((e) => {    //4
     console.log("辨識")
