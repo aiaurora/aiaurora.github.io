@@ -139,19 +139,7 @@ function recognizeFaces(sta){
       const resizedDetections2 = faceapi.resizeResults(detections2, displaySize) 
       moods = detections2[0]['expressions']      // 心情 
       //moods = resizedDetections2[0]['expressions']      // 心情 
-      //{key:value}物件轉為陣列型態[{key,value}]    
-      var moodsArray = Object.keys(moods).map(key => {
-           return {
-                  "name": key,         //共有七種心情
-                  "prop": moods[key]   //可信度
-                  }
-          })   
-      //找出可信度最高的心情
-      moodsArray.sort((a, b) => {
-        return b.prop - a.prop;
-        })
-      mood = moodsArray[0].name
-      console.log("moodArray_sortedfirst=", mood)
+      
           
       //start = new Date().getTime();
       
@@ -163,7 +151,21 @@ function recognizeFaces(sta){
           //console.log(start-end)         //受限AIO每分鐘上傳30次  
           //if(start-end >=2000){ 
           if(sta == 1){     //7
-            clearInterval()  //清除setInterval
+            
+            //{key:value}物件轉為陣列型態[{key,value}]    
+            var moodsArray = Object.keys(moods).map(key => {
+                 return {
+                        "name": key,         //共有七種心情
+                        "prop": moods[key]   //可信度
+                  }
+             })   
+            //找出可信度最高的心情
+            moodsArray.sort((a, b) => {
+                 return b.prop - a.prop;
+             })
+            mood = moodsArray[0].name
+            console.log("moodArray_sortedfirst=", mood)
+            
             /*
               $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
                     data:{"value":parseInt(age)},
