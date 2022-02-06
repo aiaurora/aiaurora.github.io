@@ -171,7 +171,8 @@ async function recognizeFaces(sta){      //4+async+sta
           box = resizedDetections[0]['detection']['_box']  
           age = resizedDetections[0]['age']                // 年紀
           gender = resizedDetections[0]['gender']          // 性別
-        if(init == true && sta==1){     //7    
+        //if(init == true && sta == 1){     //7   
+        if(sta == 1){     //7   
           $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                   data:{"value":mood},
                   type: "POST"
