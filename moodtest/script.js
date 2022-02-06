@@ -163,8 +163,8 @@ function recognizeFaces(sta){
                  return b.prop - a.prop;
              })
             mood = moodsArray[0].name
-            console.log("moodArray_sortedfirst=", mood)
-            var moodlabels = prompt("可以修改喔!我的心情:",mood).toString().split(",")
+            console.log("moodArray_sorted#1:", mood)
+            var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                     //data:{"value":mood},
                     data:{"value":moodlabels[0]},
