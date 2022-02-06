@@ -139,9 +139,6 @@ function recognizeFaces(sta){
       const resizedDetections2 = faceapi.resizeResults(detections2, displaySize) 
       moods = detections2[0]['expressions']      // 心情 
       //moods = resizedDetections2[0]['expressions']      // 心情 
-      //faceapi.draw.drawDetections(canvas, resizedDetections2)
-      //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
-      faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
           
       //start = new Date().getTime();
       
@@ -206,7 +203,11 @@ function recognizeFaces(sta){
              `${parseInt(age, 10)} years old`,
               `${gender} (${parseInt(genderProbability * 100, 10)})`
              ], detection.detection.box.topRight).draw(canvas)
-        })   
+        }) 
+      
+      //faceapi.draw.drawDetections(canvas, resizedDetections2)
+      //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
+      faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
       
       checkCookie()
     }, 100) 
