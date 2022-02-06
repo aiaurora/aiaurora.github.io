@@ -5,11 +5,10 @@ const outputtext = document.getElementById('outputtext')
 const mask = document.getElementById('mask')
 const loadImg = document.getElementById('loadImg')
 
-const idn = document.getElementById('identify')  //1
+const idn = document.getElementById('identify')  //1.增加按鈕
 
 // 讓輸入框圓角一點  需要 jquery-ui.min.js 和 jquery-ui.min.css
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
-
 
 // 儲存 cookie 的值(cookie的名字、cookie的值、儲存的天數)
 function setCookie(cname,cvalue,exdays)
@@ -98,7 +97,7 @@ async function startVideo(){
       video1.srcObject = stream;
     })
     await video1.play();
-    recognizeFaces(0)  //空->0
+    recognizeFaces(0)  //2.參數空->0
   }
 
 /*
@@ -114,14 +113,14 @@ var start = new Date().getTime();
 var end = new Date().getTime()-2000;
 */
 var displaySize;
- //多了參數sta
+ //3.多了參數sta
 function recognizeFaces(sta){  
     const canvas = faceapi.createCanvasFromMedia(video1)
     document.body.append(canvas)
     canvas.style.left = getPosition(video1)["x"] + "px";
     canvas.style.top = getPosition(video1)["y"] + "px";
-    displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }   //這兩行不放的話按鈕時會放大
-    faceapi.matchDimensions(canvas, displaySize)                               //這兩行不放的話按鈕時會放大
+    displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }   //4.這兩行不放的話按鈕時會放大
+    faceapi.matchDimensions(canvas, displaySize)                               //4.這兩行不放的話按鈕時會放大
   
     setInterval(async () => {
       inputtext.style.width = video1.offsetWidth.toString()+"px"
@@ -149,7 +148,7 @@ function recognizeFaces(sta){
             
           //console.log(start-end)         //受限AIO每分鐘上傳30次  
           //if(start-end >=2000){ 
-          if(sta == 1){     //7
+          if(sta == 1){     //5.加判斷
             
             //{key:value}物件轉為陣列型態[{key,value}]    
             var moodsArray = Object.keys(moods).map(key => {
@@ -163,15 +162,15 @@ function recognizeFaces(sta){
                  return b.prop - a.prop;
              })
             mood = moodsArray[0].name
-            console.log("moodArray_sorted#1:", mood)
-            var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")
+            console.log("moodArray_sorted#1:", mood)  
+            var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")  //6.加確認用提示
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
-                    //data:{"value":mood},
-                    data:{"value":moodlabels[0]},
+                    //data:{"value":mood},   
+                    data:{"value":moodlabels[0]},  //7.mood改為moodlabels[0]
                     type: "POST"
                    })
             console.log("mood data:",moodlabels[0]," send to adafruitIO")
-            sta = 0
+            sta = 0   //8.歸零
             /*
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
                     data:{"value":parseInt(age)},
@@ -215,8 +214,8 @@ function recognizeFaces(sta){
     }, 100) 
 }
 
-$('#identify').click((e) => {    //4
-    console.log("辨識")
+$('#identify').click((e) => {      //9.按鈕作用
+    console.log("執行辨識")
     recognizeFaces(1);
 });
 
