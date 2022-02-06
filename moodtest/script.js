@@ -120,8 +120,8 @@ function recognizeFaces(sta){
     document.body.append(canvas)
     canvas.style.left = getPosition(video1)["x"] + "px";
     canvas.style.top = getPosition(video1)["y"] + "px";
-    displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }  
-    faceapi.matchDimensions(canvas, displaySize)  
+    displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }   //這兩行不放的話按鈕時會放大
+    faceapi.matchDimensions(canvas, displaySize)                               //這兩行不放的話按鈕時會放大
   
     setInterval(async () => {
       inputtext.style.width = video1.offsetWidth.toString()+"px"
@@ -143,9 +143,9 @@ function recognizeFaces(sta){
       //start = new Date().getTime();
       
       if(resizedDetections.length >= 1){
-          box = resizedDetections[0]['detection']['_box']  
-          //測age = resizedDetections[0]['age']                // 年紀
-          //測gender = resizedDetections[0]['gender']          // 性別
+          //box = resizedDetections[0]['detection']['_box']  
+          //age = resizedDetections[0]['age']                // 年紀
+          //gender = resizedDetections[0]['gender']          // 性別
             
           //console.log(start-end)         //受限AIO每分鐘上傳30次  
           //if(start-end >=2000){ 
@@ -164,8 +164,10 @@ function recognizeFaces(sta){
              })
             mood = moodsArray[0].name
             console.log("moodArray_sortedfirst=", mood)
+            var moodlabels = prompt("可以修改喔!我的心情:",mood).toString().split(",")
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
-                    data:{"value":mood},
+                    //data:{"value":mood},
+                    data:{"value":moodlabels[0]}
                     type: "POST"
                    })
             console.log("mood data send to adafruit")
