@@ -170,7 +170,7 @@ function recognizeFaces(sta){
                     data:{"value":moodlabels[0]},
                     type: "POST"
                    })
-            console.log("mood data send to adafruit")
+            console.log("mood data:",moodlabels[0]," send to adafruitIO")
             sta = 0
             /*
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
