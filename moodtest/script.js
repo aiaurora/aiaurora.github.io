@@ -167,7 +167,7 @@ function recognizeFaces(sta){
             var moodlabels = prompt("可以修改喔!我的心情:",mood).toString().split(",")
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
                     //data:{"value":mood},
-                    data:{"value":moodlabels[0]}
+                    data:{"value":moodlabels[0]},
                     type: "POST"
                    })
             console.log("mood data send to adafruit")
