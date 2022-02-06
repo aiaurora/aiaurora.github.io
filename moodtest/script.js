@@ -137,8 +137,8 @@ function recognizeFaces(sta){
       // 心情與結果    
       const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()   
       const resizedDetections2 = faceapi.resizeResults(detections2, displaySize) 
-      //moods = detections2[0]['expressions']      // 心情 
-      moods = resizedDetections2[0]['expressions']      // 心情 
+      moods = detections2[0]['expressions']      // 心情 
+      //moods = resizedDetections2[0]['expressions']      // 心情 
       //faceapi.draw.drawDetections(canvas, resizedDetections2)
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
