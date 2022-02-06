@@ -120,8 +120,8 @@ function recognizeFaces(sta){
     document.body.append(canvas)
     canvas.style.left = getPosition(video1)["x"] + "px";
     canvas.style.top = getPosition(video1)["y"] + "px";
-    //displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }  0206
-    //faceapi.matchDimensions(canvas, displaySize)  0206
+    displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }  
+    faceapi.matchDimensions(canvas, displaySize)  
   
     setInterval(async () => {
       inputtext.style.width = video1.offsetWidth.toString()+"px"
@@ -137,8 +137,8 @@ function recognizeFaces(sta){
       // 心情與結果    
       const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()   
       const resizedDetections2 = faceapi.resizeResults(detections2, displaySize) 
-      moods = detections2[0]['expressions']      // 心情 
-      //moods = resizedDetections2[0]['expressions']      // 心情 
+      //moods = detections2[0]['expressions']      // 心情 
+      moods = resizedDetections2[0]['expressions']      // 心情 
           
       //start = new Date().getTime();
       
