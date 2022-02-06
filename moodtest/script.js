@@ -166,19 +166,12 @@ async function recognizeFaces(sta){      //4+async+sta
       mood = moodsArray[0].name
       console.log("moodArray_sortedfirst=", mood)
     
-    if(sta == 1){     //7              
+                  
       if(resizedDetections.length >= 1){
           box = resizedDetections[0]['detection']['_box']  
           age = resizedDetections[0]['age']                // 年紀
           gender = resizedDetections[0]['gender']          // 性別
-            
-          $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
-                  data:{"value":mood},
-                  type: "POST"
-                 })
-          console.log("mood data send to adafruit")
-          }  
-    }
+      }    
     
       mask.style.display = "none"
       loadImg.style.display = "none"
@@ -200,8 +193,15 @@ async function recognizeFaces(sta){      //4+async+sta
       
       //faceapi.draw.drawDetections(canvas, resizedDetections2)
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
-      faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)     
-    //---}    //7
+      faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
+    
+      if(sta == 1){     //7
+          $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
+                  data:{"value":mood},
+                  type: "POST"
+                 })
+          console.log("mood data send to adafruit")            
+       }  //7
 }    
 
 
