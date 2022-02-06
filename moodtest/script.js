@@ -101,7 +101,7 @@ async function startVideo(){
     recognizeFaces(0)  //空->0
   }
 
-
+/*
 function wait(ms){ 
     var start = new Date().getTime(); 
     var end = start; 
@@ -109,13 +109,13 @@ function wait(ms){
     end = new Date().getTime(); 
     } 
 }
-/*
+
 var start = new Date().getTime();
 var end = new Date().getTime()-2000;
 */
 var displaySize;
- //多了參數sta
-function recognizeFaces(sta){  
+ //多了async，參數sta
+async function recognizeFaces(sta){  
     const canvas = faceapi.createCanvasFromMedia(video1)
     document.body.append(canvas)
     canvas.style.left = getPosition(video1)["x"] + "px";
