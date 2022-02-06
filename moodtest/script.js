@@ -154,7 +154,7 @@ function recognizeFaces(sta){
       console.log("moodArray_sortedfirst=", mood)
           
       //start = new Date().getTime();
-      clearInterval()  //清除setInterval
+      
       if(resizedDetections.length >= 1){
           box = resizedDetections[0]['detection']['_box']  
           age = resizedDetections[0]['age']                // 年紀
@@ -163,6 +163,7 @@ function recognizeFaces(sta){
           //console.log(start-end)         //受限AIO每分鐘上傳30次  
           //if(start-end >=2000){ 
           if(sta == 1){     //7
+            clearInterval()  //清除setInterval
             /*
               $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
                     data:{"value":parseInt(age)},
