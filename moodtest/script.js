@@ -143,7 +143,7 @@ function recognizeFaces(sta){
       //start = new Date().getTime();
       
       if(resizedDetections.length >= 1){
-          //測box = resizedDetections[0]['detection']['_box']  
+          box = resizedDetections[0]['detection']['_box']  
           //測age = resizedDetections[0]['age']                // 年紀
           //測gender = resizedDetections[0]['gender']          // 性別
             
