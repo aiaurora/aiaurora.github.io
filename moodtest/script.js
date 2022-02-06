@@ -113,7 +113,7 @@ async function startVideo(){
 
 //3
 var canvas;
-var init = false;
+//---var init = false;
 
 var displaySize;
 
@@ -128,21 +128,21 @@ function  changeCanvasSize(){       //11
 }
 
 async function recognizeFaces(sta){      //4+async+sta
-    if(init == false){     //5
+    //---if(init == false){     //5
       canvas = faceapi.createCanvasFromMedia(video1)
       document.body.append(canvas)
       mask.style.display = "none"       //12
       loadImg.style.display = "none"    //13
+      // 將 canvas 的位置設定成與影像一樣
       changeCanvasSize()                //14
-        // 將 canvas 的位置設定成與影像一樣
-      canvas.style.left = getPosition(video1)["x"] + "px";
-      canvas.style.top = getPosition(video1)["y"] + "px";
+      //canvas.style.left = getPosition(video1)["x"] + "px";
+      //canvas.style.top = getPosition(video1)["y"] + "px";
       displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }
       faceapi.matchDimensions(canvas, displaySize)
-      init = true   //6
-    } 
+      //***init = true   //6
+    //---} 
 
-    if(init == true && sta==1){     //7
+    //---if(init == true && sta == 1){     //7
       // 年紀性別與結果
       const detections = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withAgeAndGender()          
       const resizedDetections = faceapi.resizeResults(detections, displaySize)    
@@ -165,7 +165,8 @@ async function recognizeFaces(sta){      //4+async+sta
         })
       mood = moodsArray[0].name
       console.log("moodArray_sortedfirst=", mood)
-                  
+    
+    if(sta == 1){     //7              
       if(resizedDetections.length >= 1){
           box = resizedDetections[0]['detection']['_box']  
           age = resizedDetections[0]['age']                // 年紀
@@ -177,6 +178,7 @@ async function recognizeFaces(sta){      //4+async+sta
                  })
           console.log("mood data send to adafruit")
           }  
+    }
     
       mask.style.display = "none"
       loadImg.style.display = "none"
@@ -199,7 +201,7 @@ async function recognizeFaces(sta){      //4+async+sta
       //faceapi.draw.drawDetections(canvas, resizedDetections2)
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)     
-    }    
+    //---}    //7
 }    
 
 
