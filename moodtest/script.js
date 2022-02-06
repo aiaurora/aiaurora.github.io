@@ -128,7 +128,7 @@ function  changeCanvasSize(){       //11
 }
 
 async function recognizeFaces(sta){      //4+async+sta
-    if(init == false){     //5
+    //if(init == false){     //5
       const canvas = faceapi.createCanvasFromMedia(video1)
       document.body.append(canvas)
       mask.style.display = "none"       //12
