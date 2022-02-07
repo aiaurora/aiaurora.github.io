@@ -122,8 +122,7 @@ function recognizeFaces(sta){
     displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }   //4.這兩行不放的話按鈕時會放大
     faceapi.matchDimensions(canvas, displaySize)                               //4.這兩行不放的話按鈕時會放大
   
-    //測11.0208增加pt_setInterval測試是否能消除疊框
-    var pt_setInterval = setInterval(async () => {
+    setInterval(async () => {
       inputtext.style.width = video1.offsetWidth.toString()+"px"
       inputtext.style.height = video1.offsetHeight.toString()/8+"px"
       inputtextUser.style.width = video1.offsetWidth.toString()+"px"
@@ -219,7 +218,6 @@ function recognizeFaces(sta){
 
 $('#identify').click((e) => {      //9.按鈕作用
     console.log("執行辨識")
-    clearInterval(pt_setInterval);    //測11.0208增加pt_setInterval測試是否能消除疊框
     recognizeFaces(1);
 });
 
