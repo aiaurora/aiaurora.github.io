@@ -219,7 +219,7 @@ function recognizeFaces(sta){
 
 $('#identify').click((e) => {      //9.按鈕作用
     console.log("執行辨識")
-    clearInterval(pt_setInterval)    //測11.0208增加pt_setInterval測試是否能消除疊框
+    clearInterval(pt_setInterval);    //測11.0208增加pt_setInterval測試是否能消除疊框
     recognizeFaces(1);
 });
 
