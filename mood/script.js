@@ -153,9 +153,9 @@ function recognizeFaces(){
     start = new Date().getTime();
     
     if(resizedDetections.length >= 1){
-        box = resizedDetections[0]['detection']['_box']  
-        age = resizedDetections[0]['age']                // 年紀
-        gender = resizedDetections[0]['gender']          // 性別
+        //box = resizedDetections[0]['detection']['_box']  
+        //age = resizedDetections[0]['age']                // 年紀
+        //gender = resizedDetections[0]['gender']          // 性別
             
         //console.log(start-end)         //受限AIO每分鐘上傳30次  
         if(start-end >=2000){ 
