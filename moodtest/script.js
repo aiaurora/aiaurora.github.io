@@ -127,6 +127,8 @@ function recognizeFaces(sta){
       inputtext.style.height = video1.offsetHeight.toString()/8+"px"
       inputtextUser.style.width = video1.offsetWidth.toString()+"px"
       inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"
+      idn.style.height = video1.offsetHeight.toString()/8+"px"                 //10.0208增加測試是否能消除疊框
+      idn.style.fontSize = video1.offsetHeight.toString()/15+"px"              //10.0208增加測試是否能消除疊框
       displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }
       faceapi.matchDimensions(canvas, displaySize)
       // 年紀性別與結果
