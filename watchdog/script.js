@@ -4,11 +4,11 @@ var labels = ['Teddy','Chuan','Jackey']  //要和*.py內容所列一致
 //var username = prompt("請輸入 AIO 使用者名稱:","hylin")
 const inputtextUser = document.getElementById('inputtextUser')  //新增的
 const video1 = document.getElementById('inputVideo')
-const conDev = document.getElementById('connDiv') 
-const discon = document.getElementById('disconnBtn')
-const con = document.getElementById('connBtn')
+//const conDev = document.getElementById('connDiv') 
+//const discon = document.getElementById('disconnBtn')
+//const con = document.getElementById('connBtn')
 const idn = document.getElementById('identify')
-const connBtnImg = document.getElementById('connBtnImg')
+//const connBtnImg = document.getElementById('connBtnImg')
 const inputtext = document.getElementById('inputtext')
 
 // 讓輸入框圓角一點  需要 jquery-ui.min.js 和 jquery-ui.min.css
