@@ -175,8 +175,8 @@ async function canRecognizeFaces(sta){
                   "value":lab+dis
                 },
               })
-            var resp = prompt("辨識結果:",labelcc[lab])  //增加中文結果
-            
+            //var resp = prompt("辨識結果:",labelcc[lab])  //增加中文結果
+            alert('"辨識結果: "+labelcc[lab])
             const box = resizedDetections[i].detection.box
             const drawBox = new faceapi.draw.DrawBox(box, { label: result })
             drawBox.draw(canvas)
