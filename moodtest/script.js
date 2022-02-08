@@ -97,7 +97,7 @@ async function startVideo(){
       video1.srcObject = stream;
     })
     await video1.play();
-    recognizeFaces(0)  //2.參數空->0
+    recognizeFaces()  //2.參數空->0   0208去除測試
   }
 
 /*
@@ -113,8 +113,11 @@ var start = new Date().getTime();
 var end = new Date().getTime()-2000;
 */
 var displaySize;
- //3.多了參數sta
-function recognizeFaces(sta){  
+
+var moods;  //12.0208global var for button
+
+ //3.多了參數sta   0208去除測試
+function recognizeFaces(){  
     const canvas = faceapi.createCanvasFromMedia(video1)
     document.body.append(canvas)
     canvas.style.left = getPosition(video1)["x"] + "px";
@@ -148,46 +151,7 @@ function recognizeFaces(sta){
           //age = resizedDetections[0]['age']                // 年紀
           //gender = resizedDetections[0]['gender']          // 性別
             
-          //console.log(start-end)         //受限AIO每分鐘上傳30次  
-          //if(start-end >=2000){ 
-          if(sta == 1){     //5.加判斷
-            
-            //{key:value}物件轉為陣列型態[{key,value}]    
-            var moodsArray = Object.keys(moods).map(key => {
-                 return {
-                        "name": key,         //共有七種心情
-                        "prop": moods[key]   //可信度
-                  }
-             })   
-            //找出可信度最高的心情
-            moodsArray.sort((a, b) => {
-                 return b.prop - a.prop;
-             })
-            mood = moodsArray[0].name
-            console.log("moodArray_sorted#1:", mood)  
-            var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")  //6.加確認用提示
-            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
-                    //data:{"value":mood},   
-                    data:{"value":moodlabels[0]},  //7.mood改為moodlabels[0]
-                    type: "POST"
-                   })
-            console.log("mood data:",moodlabels[0]," send to adafruitIO")
-            sta = 0   //8.歸零
-            /*
-            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
-                    data:{"value":parseInt(age)},
-                    type: "POST"
-                   })
-            console.log("age data  send to adafruit")  
-            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
-                    data:{"value":gender},
-                    type: "POST"
-                   })
-            console.log("gender data send to adafruit") 
-            */
-              
-            //end = start
-          }        
+               
       }
     
       mask.style.display = "none"
@@ -218,7 +182,47 @@ function recognizeFaces(sta){
 
 $('#identify').click((e) => {      //9.按鈕作用
     console.log("執行辨識")
-    recognizeFaces(1);
+    //recognizeFaces(1);
+    //console.log(start-end)         //受限AIO每分鐘上傳30次  
+          //if(start-end >=2000){ 
+          //if(sta == 1){     //5.加判斷  0208測試按鈕
+            
+            //{key:value}物件轉為陣列型態[{key,value}]    
+            var moodsArray = Object.keys(moods).map(key => {
+                 return {
+                        "name": key,         //共有七種心情
+                        "prop": moods[key]   //可信度
+                  }
+             })   
+            //找出可信度最高的心情
+            moodsArray.sort((a, b) => {
+                 return b.prop - a.prop;
+             })
+            mood = moodsArray[0].name
+            console.log("moodArray_sorted#1:", mood)  
+            var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")  //6.加確認用提示
+            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
+                    //data:{"value":mood},   
+                    data:{"value":moodlabels[0]},  //7.mood改為moodlabels[0]
+                    type: "POST"
+                   })
+            console.log("mood data:",moodlabels[0]," send to adafruitIO")
+            //sta = 0   //8.歸零
+            /*
+            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":parseInt(age)},
+                    type: "POST"
+                   })
+            console.log("age data  send to adafruit")  
+            $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/gender/data?X-AIO-Key="+inputtext.value,
+                    data:{"value":gender},
+                    type: "POST"
+                   })
+            console.log("gender data send to adafruit") 
+            */
+              
+            //end = start
+          //}  0208   0208測試按鈕
 });
 
 // 取得元素位置
