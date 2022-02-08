@@ -1,6 +1,7 @@
 // 定義名稱。要與 images 資料夾內相同名稱 
 //var labels = prompt("請輸入名稱並以逗號隔開人名:","Teddy,Chuan").toString().split(",")
 var labels = ['Teddy','Chuan','Jackey']  //要和*.py內容所列一致
+var labelcc = ['泰迪','茱安','宗憲']  //跳出中文
 //var username = prompt("請輸入 AIO 使用者名稱:","hylin")
 const inputtextUser = document.getElementById('inputtextUser')  //新增的
 const video1 = document.getElementById('inputVideo')
@@ -174,7 +175,8 @@ async function canRecognizeFaces(sta){
                   "value":lab+dis
                 },
               })
-
+            var resp = prompt("辨識結果:",labelcc[lab])  //增加中文結果
+            
             const box = resizedDetections[i].detection.box
             const drawBox = new faceapi.draw.DrawBox(box, { label: result })
             drawBox.draw(canvas)
