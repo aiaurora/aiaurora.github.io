@@ -138,18 +138,16 @@ function recognizeFaces(){
       const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()   
       const resizedDetections2 = faceapi.resizeResults(detections2, displaySize) 
       //moods = detections2[0]['expressions']      // 心情 
-      moods = resizedDetections2[0]['expressions']      // 心情 
-          
-      //start = new Date().getTime();
+      moods = resizedDetections2[0]['expressions']      // 心情           
       
+      /*
       if(resizedDetections.length >= 1){
-          //box = resizedDetections[0]['detection']['_box']  
-          //age = resizedDetections[0]['age']                // 年紀
-          //gender = resizedDetections[0]['gender']          // 性別
-            
-               
+          box = resizedDetections[0]['detection']['_box']  
+          age = resizedDetections[0]['age']                // 年紀
+          gender = resizedDetections[0]['gender']          // 性別  
       }
-    
+      */
+      
       mask.style.display = "none"
       loadImg.style.display = "none"
       canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
