@@ -206,7 +206,7 @@ $('#identify').click((e) => {      //9.按鈕作用
                     data:{"value":moodlabels[0]},  //7.mood改為moodlabels[0]
                     type: "POST"
                    })
-            console.log("mood data:",moodlabels[0]," send to adafruitIO")
+            console.log("mood data send to adafruitIO:", moodlabels[0])
             //sta = 0   //8.歸零
             /*
             $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/age/data?X-AIO-Key="+inputtext.value,
