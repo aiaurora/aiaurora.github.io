@@ -167,7 +167,7 @@ async function canRecognizeFaces(sta){
             return faceMatcher.findBestMatch(d.descriptor)
         })
         
-        var resp
+        var resp  //0209改為global var , alert(resp)才能在為box之後
         
         results.forEach((result,i) =>{
             console.log("最接近存檔照片的是:",results[i]["label"])     // 顯示所有偵測到的名稱(最有可能，但不一定是本人，由*.py再做篩選)
@@ -189,7 +189,7 @@ async function canRecognizeFaces(sta){
                   "value":lab+dis
                 },
               })
-            console.log("192：upload successful!")    //0209  
+            console.log("upload successful!")    //0209  
             alert('upload successful!')    //0209            
             
             var num = 1-dis
@@ -199,7 +199,7 @@ async function canRecognizeFaces(sta){
         setTimeout(async () => {
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
             
-            alert(resp)    //0209位置
+            alert(resp)    //0209新位置
         },1000)
         
     }
