@@ -5,8 +5,8 @@ var labelcc = ['泰迪','茱安','吳宗憲','蔡依林','周子瑜','林志玲'
 //const inputtextUser = document.getElementById('inputtextUser')  //0209no
 //const inputtext = document.getElementById('inputtext')   //0209no
 //var username = prompt("請輸入 AIO 使用者名稱:","hylin")
-const username = "hylin"                                   //0209改內建
-const keyvalue = "aio_COUZ71Merp2DnidAmP2TWUemiLCf"        //0209改內建+更改
+//const username = "hylin"                                   //star face 免上傳
+//const keyvalue = "aio_COUZ71Merp2DnidAmP2TWUemiLCf"        //star face 免上傳
 
 const video1 = document.getElementById('inputVideo')
 const idn = document.getElementById('identify')
@@ -181,6 +181,7 @@ async function canRecognizeFaces(sta){
             const drawBox = new faceapi.draw.DrawBox(box, { label: result })
             drawBox.draw(canvas)            
             
+            /*star face 免上傳
             //上傳AIO
             $.ajax({    
                 url: "https://io.adafruit.com/api/v2/"+username+"/feeds/door/data?X-AIO-Key="+keyvalue,
@@ -190,7 +191,7 @@ async function canRecognizeFaces(sta){
                 },
               })
             console.log("upload successful!")    //0209   
-            
+            */
             var num = 1-dis
             resp = "辨識結果: " + labelcc[lab] + ", 可信度: " + String(num.toFixed(2))
             //alert(resp)    //原位置
