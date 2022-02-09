@@ -33,7 +33,7 @@ setInterval(async () => {
 */
 
 
-/*     //0209no
+
 // 儲存 cookie 的值(cookie的名字、cookie的值、儲存的天數)
 function setCookie(cname,cvalue,exdays)
 {
@@ -93,14 +93,13 @@ function checkCookie()
   last_key = key
   last_name = name
 }
-*/
 
 Promise.all([
     //inputtext.style.width = video1.offsetWidth.toString()+"px",
     //inputtext.style.height = video1.offsetHeight.toString()/8+"px",
     mask.style.display = "block",
     loadImg.style.display = "block",
-    //checkCookie(),        //0209no
+    checkCookie(),        
     faceapi.nets.ssdMobilenetv1.loadFromUri('./models'),
     faceapi.nets.faceRecognitionNet.loadFromUri('./models'), 
     faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
@@ -211,7 +210,7 @@ function loadLabel() {
   var succ = true;
   return Promise.all(
       labels.map(async (label) => {
-          console.log("199.Label名稱：",label)
+          console.log("Label名稱：",label)
           const descriptions = []
           for (let i = 1; i <= 3; i++) {
               try {
