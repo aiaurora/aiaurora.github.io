@@ -21,16 +21,16 @@ const idn = document.getElementById('identify')
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
 
 setInterval(async () => {
-    //inputtext.style.width = video1.offsetWidth.toString()+"px"    
-    //inputtext.style.height = video1.offsetHeight.toString()/8+"px"    
-    //inputtextUser.style.width = video1.offsetWidth.toString()+"px"  //新增的
-    //inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"  //新增的
+    //inputtext.style.width = video1.offsetWidth.toString()+"px"          //0209no
+    //inputtext.style.height = video1.offsetHeight.toString()/8+"px"      //0209no
+    //inputtextUser.style.width = video1.offsetWidth.toString()+"px"      //0209no
+    //inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"  //0209no
     idn.style.height = video1.offsetHeight.toString()/8+"px"
     idn.style.fontSize = video1.offsetHeight.toString()/15+"px"
     //checkCookie()
 },100)
 
-/*
+/*  //0209no
 // 儲存 cookie 的值(cookie的名字、cookie的值、儲存的天數)
 function setCookie(cname,cvalue,exdays)
 {
@@ -93,8 +93,8 @@ function checkCookie()
 */
 
 Promise.all([
-    //inputtext.style.width = video1.offsetWidth.toString()+"px",
-    //inputtext.style.height = video1.offsetHeight.toString()/8+"px",
+    //inputtext.style.width = video1.offsetWidth.toString()+"px",         //0209no
+    //inputtext.style.height = video1.offsetHeight.toString()/8+"px",     //0209no
     mask.style.display = "block",
     loadImg.style.display = "block",
     //checkCookie(),        
@@ -159,7 +159,7 @@ async function canRecognizeFaces(sta){
     }
     if(init == true && sta==1){   
         displaySize = { width: video1.offsetWidth, height: video1.offsetHeight}
-        faceapi.matchDimensions(canvas, displaySize) ///
+        faceapi.matchDimensions(canvas, displaySize)    
         detections = await faceapi.detectAllFaces(video1).withFaceLandmarks().withFaceDescriptors()
         resizedDetections = faceapi.resizeResults(detections, displaySize)
         canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
