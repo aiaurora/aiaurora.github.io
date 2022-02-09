@@ -174,6 +174,10 @@ async function canRecognizeFaces(sta){
             //console.log(labels.indexOf(results[i]["label"]))
             console.log("label:",lab,"distance:",dis)
             //sendMsg(results[i]["label"]+":"+results[i]["distance"])
+            
+            const box = resizedDetections[i].detection.box
+            const drawBox = new faceapi.draw.DrawBox(box, { label: result })
+            drawBox.draw(canvas)
 
             $.ajax({    
                 url: "https://io.adafruit.com/api/v2/"+username+"/feeds/door/data?X-AIO-Key="+keyvalue,
@@ -187,9 +191,7 @@ async function canRecognizeFaces(sta){
             var resp = "辨識結果: " + labelcc[lab] + ", 可信度: " + String(num.toFixed(2))
             alert(resp)
                   
-            const box = resizedDetections[i].detection.box
-            const drawBox = new faceapi.draw.DrawBox(box, { label: result })
-            drawBox.draw(canvas)
+            
         })
         setTimeout(async () => {
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
