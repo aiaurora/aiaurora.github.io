@@ -2,11 +2,11 @@
 //var labels = prompt("請輸入名稱並以逗號隔開人名:","Teddy,Chuan").toString().split(",")
 var labels = ['Teddy','Chuan','Jackey','Jolin','TzuYu','ChiLing']  //要和*.py內容所列一致
 var labelcc = ['泰迪','茱安','吳宗憲','蔡依林','周子瑜','林志玲']  //跳出中文
+const inputtextUser = document.getElementById('inputtextUser')  //0209改為暱稱
+//const inputtext = document.getElementById('inputtext')   //0209no
 //var username = prompt("請輸入 AIO 使用者名稱:","hylin")
-const inputtextUser = document.getElementById('inputtextUser')  //新增的
-//const inputtext = document.getElementById('inputtext')
-const username = "hylin"
-const inputtext = "aio_BAJh44Hl0dRRvIRnvgVWgQMqhf1Q"
+const username = "hylin"                                   //0209改內建
+const keyvalue = "aio_BAJh44Hl0dRRvIRnvgVWgQMqhf1Q"        //0209改內建
 
 const video1 = document.getElementById('inputVideo')
 const idn = document.getElementById('identify')
@@ -20,16 +20,20 @@ const idn = document.getElementById('identify')
 // 讓輸入框圓角一點  需要 jquery-ui.min.js 和 jquery-ui.min.css
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
 
+/*     //0209no
 setInterval(async () => {
-    //inputtext.style.width = video1.offsetWidth.toString()+"px"
-    //inputtext.style.height = video1.offsetHeight.toString()/8+"px"
+    inputtext.style.width = video1.offsetWidth.toString()+"px"    
+    inputtext.style.height = video1.offsetHeight.toString()/8+"px"    
     inputtextUser.style.width = video1.offsetWidth.toString()+"px"  //新增的
     inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"  //新增的
     idn.style.height = video1.offsetHeight.toString()/8+"px"
     idn.style.fontSize = video1.offsetHeight.toString()/15+"px"
     checkCookie()
 },100)
+*/
 
+
+/*     //0209no
 // 儲存 cookie 的值(cookie的名字、cookie的值、儲存的天數)
 function setCookie(cname,cvalue,exdays)
 {
@@ -89,13 +93,14 @@ function checkCookie()
   last_key = key
   last_name = name
 }
+*/
 
 Promise.all([
     //inputtext.style.width = video1.offsetWidth.toString()+"px",
     //inputtext.style.height = video1.offsetHeight.toString()/8+"px",
     mask.style.display = "block",
     loadImg.style.display = "block",
-    checkCookie(),
+    //checkCookie(),        //0209no
     faceapi.nets.ssdMobilenetv1.loadFromUri('./models'),
     faceapi.nets.faceRecognitionNet.loadFromUri('./models'), 
     faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
@@ -123,7 +128,7 @@ var canvas;
 var detections;
 var resizedDetections;
 var results;
-var init = false;
+//var init = false;
 
 
 function  changeCanvasSize(){
@@ -174,7 +179,7 @@ async function canRecognizeFaces(sta){
             //sendMsg(results[i]["label"]+":"+results[i]["distance"])
 
             $.ajax({    
-                url: "https://io.adafruit.com/api/v2/"+username+"/feeds/door/data?X-AIO-Key="+inputtext.value,
+                url: "https://io.adafruit.com/api/v2/"+username+"/feeds/door/data?X-AIO-Key="+keyvalue,
                 type: "POST",
                 data: {
                   "value":lab+dis
@@ -202,7 +207,7 @@ $('#identify').click((e) => {
 
 function loadLabel() {
   var labels_len = labels.length;
-  console.log("195.Labels數量：",labels_len)
+  console.log("Labels數量：",labels_len)
   var succ = true;
   return Promise.all(
       labels.map(async (label) => {
@@ -212,7 +217,7 @@ function loadLabel() {
               try {
                   //img = await faceapi.fetchImage(`./images/${label}/${i}.jpg`)  //反引號(back-tick)
                   img = await faceapi.fetchImage('./images/'+label+'/'+i+'.jpg')
-                  console.log('205.照片位置./images/'+label+'/'+i+'.jpg')
+                  console.log('照片位置./images/'+label+'/'+i+'.jpg')
               }
               catch (e) {
                   console.log("換PNG啦")
