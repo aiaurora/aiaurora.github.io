@@ -1,7 +1,6 @@
 const video1 = document.getElementById('inputVideo')
 //const inputtext = document.getElementById('inputtext')         //0.改為內建，AIO KEY
 //const inputtextUser = document.getElementById('inputtextUser') //0.改為內建，AIO帳號
-//const outputtext = document.getElementById('outputtext')
 const username = "hylin"                               
 const keyvalue = "aio_JYUM37UuecxfKqcICWTW1FjeUzty"
 const mask = document.getElementById('mask')
