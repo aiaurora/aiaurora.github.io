@@ -163,13 +163,13 @@ async function canRecognizeFaces(sta){
         
         var resp  //0209
         results.forEach((result,i) =>{
-            console.log("163.最接近存檔照片的是:",results[i]["label"])     // 顯示所有偵測到的名稱(最有可能，但不一定是本人，由*.py再做篩選)
+            console.log("最接近存檔照片的是:",results[i]["label"])     // 顯示所有偵測到的名稱(最有可能，但不一定是本人，由*.py再做篩選)
             lab = parseFloat(labels.indexOf(results[i]["label"]))
             dis = parseFloat(results[i]["distance"])
             //console.log(labels.indexOf(results[i]["label"]))
-            console.log("167.label:",lab,"distance:",dis)
+            console.log("label:",lab,"distance:",dis)
             //sendMsg(results[i]["label"]+":"+results[i]["distance"])
-
+            console.log("inputtextUser.value:",inputtextUser.value,"dinputtext.value:",inputtext.value)  //0209
             $.ajax({    //已用inputtextUser.value取代username
                 url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/door/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
