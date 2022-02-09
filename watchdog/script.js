@@ -7,10 +7,10 @@ const inputtextUser = document.getElementById('inputtextUser')  //新增的
 const inputtext = document.getElementById('inputtext')
 const video1 = document.getElementById('inputVideo')
 const idn = document.getElementById('identify')
-const conDev = document.getElementById('connDiv') 
-const discon = document.getElementById('disconnBtn')
-const con = document.getElementById('connBtn')
-const connBtnImg = document.getElementById('connBtnImg')
+//const conDev = document.getElementById('connDiv') 
+//const discon = document.getElementById('disconnBtn')
+//const con = document.getElementById('connBtn')
+//const connBtnImg = document.getElementById('connBtnImg')
 
 
 // 讓輸入框圓角一點  需要 jquery-ui.min.js 和 jquery-ui.min.css
@@ -60,9 +60,9 @@ function checkCookie()
   if(first == false){
     // 從 Cookie 中取值
     key = getCookie("key");
-    inputtext.value = key
+    inputtext.value = key;
     name = getCookie("name");
-    inputtextUser.value = name
+    inputtextUser.value = name;
     first = true
   }
 
