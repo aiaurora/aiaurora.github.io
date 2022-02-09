@@ -187,6 +187,7 @@ async function canRecognizeFaces(sta){
                   "value":lab+dis
                 },
               })
+            console.log("upload successful!")    //0209  
             alert('upload successful!')    //0209            
             
             var num = 1-dis
