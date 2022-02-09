@@ -1,9 +1,9 @@
 const video1 = document.getElementById('inputVideo')
-const inputtext = document.getElementById('inputtext')
-//const inputtextUser = document.getElementById('inputtextUser')
+//const inputtext = document.getElementById('inputtext')         //0.改為內建，AIO KEY
+//const inputtextUser = document.getElementById('inputtextUser') //0.改為內建，AIO帳號
 //const outputtext = document.getElementById('outputtext')
-const inputtextUser = "hylin"                                //0.改為內建，AIO帳號
-const outputtext = "aio_sdcm576b541nM2o4LDclnGzPhX1C"        //0.改為內建，AIO KEY
+const username = "hylin"                               
+const keyvalue = "aio_sdcm576b541nM2o4LDclnGzPhX1C"
 const mask = document.getElementById('mask')
 const loadImg = document.getElementById('loadImg')
 
@@ -12,6 +12,7 @@ const idn = document.getElementById('identify')  //1.增加按鈕
 // 讓輸入框圓角一點  需要 jquery-ui.min.js 和 jquery-ui.min.css
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
 
+/*
 // 儲存 cookie 的值(cookie的名字、cookie的值、儲存的天數)
 function setCookie(cname,cvalue,exdays)
 {
@@ -71,6 +72,7 @@ function checkCookie()
   last_key = key
   last_name = name
 }
+*/
 
 // 先讀取完模型再開啟攝影機
 Promise.all([
@@ -84,7 +86,7 @@ Promise.all([
     console.log("load models OK"),
     mask.style.display = "block",
     loadImg.style.display = "block",
-    checkCookie()
+    //checkCookie()
   ]).then(startVideo)
 
 async function startVideo(){
@@ -124,10 +126,10 @@ function recognizeFaces(){
     faceapi.matchDimensions(canvas, displaySize)                               //3.這兩行不放的話按鈕時會放大
   
     setInterval(async () => {
-      inputtext.style.width = video1.offsetWidth.toString()+"px"
-      inputtext.style.height = video1.offsetHeight.toString()/8+"px"
-      inputtextUser.style.width = video1.offsetWidth.toString()+"px"
-      inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"
+      //inputtext.style.width = video1.offsetWidth.toString()+"px"
+      //inputtext.style.height = video1.offsetHeight.toString()/8+"px"
+      //inputtextUser.style.width = video1.offsetWidth.toString()+"px"
+      //inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"
       idn.style.height = video1.offsetHeight.toString()/8+"px"                 //4.0208增加測試是否能消除疊框
       idn.style.fontSize = video1.offsetHeight.toString()/15+"px"              //4.0208增加測試是否能消除疊框
       displaySize = { width: video1.offsetWidth, height: video1.offsetHeight }
@@ -172,7 +174,7 @@ function recognizeFaces(){
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
       
-      checkCookie()
+      //checkCookie()
     }, 100) 
 }
 
@@ -194,7 +196,7 @@ $('#identify').click((e) => {      //5.按鈕作用
     console.log("moodArray_sorted#1:", mood)  
   
     var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")  //6.加確認用提示
-    $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
+    $.ajax({url: "https://io.adafruit.com/api/v2/"+username+"/feeds/mood/data?X-AIO-Key="+keyvalue,
     data:{"value":moodlabels[0]},  //7.mood改為moodlabels[0]
            type: "POST"
     })
