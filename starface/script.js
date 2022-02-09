@@ -21,8 +21,8 @@ const idn = document.getElementById('identify')
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
 
 setInterval(async () => {
-    inputtext.style.width = video1.offsetWidth.toString()+"px"
-    inputtext.style.height = video1.offsetHeight.toString()/8+"px"
+    //inputtext.style.width = video1.offsetWidth.toString()+"px"
+    //inputtext.style.height = video1.offsetHeight.toString()/8+"px"
     inputtextUser.style.width = video1.offsetWidth.toString()+"px"  //新增的
     inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"  //新增的
     idn.style.height = video1.offsetHeight.toString()/8+"px"
@@ -91,8 +91,8 @@ function checkCookie()
 }
 
 Promise.all([
-    inputtext.style.width = video1.offsetWidth.toString()+"px",
-    inputtext.style.height = video1.offsetHeight.toString()/8+"px",
+    //inputtext.style.width = video1.offsetWidth.toString()+"px",
+    //inputtext.style.height = video1.offsetHeight.toString()/8+"px",
     mask.style.display = "block",
     loadImg.style.display = "block",
     checkCookie(),
