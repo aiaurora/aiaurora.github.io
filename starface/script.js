@@ -128,7 +128,7 @@ var canvas;
 var detections;
 var resizedDetections;
 var results;
-//var init = false;
+var init = false;
 
 
 function  changeCanvasSize(){
