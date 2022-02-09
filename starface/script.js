@@ -2,7 +2,7 @@
 //var labels = prompt("請輸入名稱並以逗號隔開人名:","Teddy,Chuan").toString().split(",")
 var labels = ['Teddy','Chuan','Jackey','Jolin','TzuYu','ChiLing']  //要和*.py內容所列一致
 var labelcc = ['泰迪','茱安','吳宗憲','蔡依林','周子瑜','林志玲']  //跳出中文
-const inputtextUser = document.getElementById('inputtextUser')  //0209改為暱稱
+//const inputtextUser = document.getElementById('inputtextUser')  //0209no
 //const inputtext = document.getElementById('inputtext')   //0209no
 //var username = prompt("請輸入 AIO 使用者名稱:","hylin")
 const username = "hylin"                                   //0209改內建
@@ -20,20 +20,17 @@ const idn = document.getElementById('identify')
 // 讓輸入框圓角一點  需要 jquery-ui.min.js 和 jquery-ui.min.css
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
 
-/*     //0209no
 setInterval(async () => {
-    inputtext.style.width = video1.offsetWidth.toString()+"px"    
-    inputtext.style.height = video1.offsetHeight.toString()/8+"px"    
-    inputtextUser.style.width = video1.offsetWidth.toString()+"px"  //新增的
-    inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"  //新增的
+    //inputtext.style.width = video1.offsetWidth.toString()+"px"    
+    //inputtext.style.height = video1.offsetHeight.toString()/8+"px"    
+    //inputtextUser.style.width = video1.offsetWidth.toString()+"px"  //新增的
+    //inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"  //新增的
     idn.style.height = video1.offsetHeight.toString()/8+"px"
     idn.style.fontSize = video1.offsetHeight.toString()/15+"px"
-    checkCookie()
+    //checkCookie()
 },100)
-*/
 
-
-
+/*
 // 儲存 cookie 的值(cookie的名字、cookie的值、儲存的天數)
 function setCookie(cname,cvalue,exdays)
 {
@@ -93,6 +90,7 @@ function checkCookie()
   last_key = key
   last_name = name
 }
+*/
 
 Promise.all([
     //inputtext.style.width = video1.offsetWidth.toString()+"px",
