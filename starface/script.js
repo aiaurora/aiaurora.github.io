@@ -177,8 +177,9 @@ async function canRecognizeFaces(sta){
             
             const box = resizedDetections[i].detection.box
             const drawBox = new faceapi.draw.DrawBox(box, { label: result })
-            drawBox.draw(canvas)
-
+            drawBox.draw(canvas)            
+            
+            //上傳AIO
             $.ajax({    
                 url: "https://io.adafruit.com/api/v2/"+username+"/feeds/door/data?X-AIO-Key="+keyvalue,
                 type: "POST",
@@ -189,13 +190,12 @@ async function canRecognizeFaces(sta){
             //var resp = prompt("辨識結果:",labelcc[lab])  //增加中文結果
             var num = 1-dis
             var resp = "辨識結果: " + labelcc[lab] + ", 可信度: " + String(num.toFixed(2))
-            alert(resp)
-                  
-            
+            //alert(resp)    //原位置
         })
         setTimeout(async () => {
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-        },1000)
+        },100)   //0209：1000 -> 100
+        alert(resp)
     }
 }
 
