@@ -3,7 +3,7 @@ const video1 = document.getElementById('inputVideo')
 //const inputtextUser = document.getElementById('inputtextUser') //0.改為內建，AIO帳號
 //const outputtext = document.getElementById('outputtext')
 const username = "hylin"                               
-const keyvalue = "aio_sdcm576b541nM2o4LDclnGzPhX1C"
+const keyvalue = "aio_JYUM37UuecxfKqcICWTW1FjeUzty"
 const mask = document.getElementById('mask')
 const loadImg = document.getElementById('loadImg')
 
