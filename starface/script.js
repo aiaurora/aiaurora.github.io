@@ -6,7 +6,7 @@ var labelcc = ['泰迪','茱安','吳宗憲','蔡依林','周子瑜','林志玲'
 //const inputtext = document.getElementById('inputtext')   //0209no
 //var username = prompt("請輸入 AIO 使用者名稱:","hylin")
 const username = "hylin"                                   //0209改內建
-const keyvalue = "aio_BAJh44Hl0dRRvIRnvgVWgQMqhf1Q"        //0209改內建
+const keyvalue = "aio_COUZ71Merp2DnidAmP2TWUemiLCf"        //0209改內建+更改
 
 const video1 = document.getElementById('inputVideo')
 const idn = document.getElementById('identify')
@@ -189,8 +189,7 @@ async function canRecognizeFaces(sta){
                   "value":lab+dis
                 },
               })
-            console.log("upload successful!")    //0209  
-            alert('upload successful!')    //0209            
+            console.log("upload successful!")    //0209   
             
             var num = 1-dis
             resp = "辨識結果: " + labelcc[lab] + ", 可信度: " + String(num.toFixed(2))
