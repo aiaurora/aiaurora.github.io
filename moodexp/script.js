@@ -1,8 +1,7 @@
 const video1 = document.getElementById('inputVideo')
-//const inputtext = document.getElementById('inputtext')         //0.改為內建，AIO KEY
+const inputtext = document.getElementById('inputtext')         
 //const inputtextUser = document.getElementById('inputtextUser') //0.改為內建，AIO帳號
 const username = "hylin"                               
-const keyvalue = "aio_jmxk98X9o11yyYUjhLVLd3HbaCFt"
 const mask = document.getElementById('mask')
 const loadImg = document.getElementById('loadImg')
 
@@ -195,7 +194,7 @@ $('#identify').click((e) => {      //5.按鈕作用
     console.log("moodArray_sorted#1:", mood)  
   
     var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")  //6.加確認用提示
-    $.ajax({url: "https://io.adafruit.com/api/v2/"+username+"/feeds/mood/data?X-AIO-Key="+keyvalue,
+    $.ajax({url: "https://io.adafruit.com/api/v2/"+username+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
     data:{"value":moodlabels[0]},  //7.mood改為moodlabels[0]
            type: "POST"
     })
