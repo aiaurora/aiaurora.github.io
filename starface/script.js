@@ -3,9 +3,9 @@
 var labels = ['Teddy','Chuan','Jackey','Jolin','TzuYu','ChiLing']  //要和*.py內容所列一致
 var labelcc = ['泰迪','茱安','吳宗憲','蔡依林','周子瑜','林志玲']  //跳出中文
 //var username = prompt("請輸入 AIO 使用者名稱:","hylin")
-//const inputtextUser = document.getElementById('inputtextUser')  //新增的
+const inputtextUser = document.getElementById('inputtextUser')  //新增的
 //const inputtext = document.getElementById('inputtext')
-const inputtextUser = "hylin"
+const username = "hylin"
 const inputtext = "aio_BAJh44Hl0dRRvIRnvgVWgQMqhf1Q"
 
 const video1 = document.getElementById('inputVideo')
@@ -173,8 +173,8 @@ async function canRecognizeFaces(sta){
             console.log("167.label:",lab,"distance:",dis)
             //sendMsg(results[i]["label"]+":"+results[i]["distance"])
 
-            $.ajax({    //已用inputtextUser.value取代username
-                url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/door/data?X-AIO-Key="+inputtext.value,
+            $.ajax({    
+                url: "https://io.adafruit.com/api/v2/"+username+"/feeds/door/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
                 data: {
                   "value":lab+dis
