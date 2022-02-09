@@ -166,7 +166,9 @@ async function canRecognizeFaces(sta){
         results = resizedDetections.map((d) => {
             return faceMatcher.findBestMatch(d.descriptor)
         })
-
+        
+        var resp
+        
         results.forEach((result,i) =>{
             console.log("最接近存檔照片的是:",results[i]["label"])     // 顯示所有偵測到的名稱(最有可能，但不一定是本人，由*.py再做篩選)
             lab = parseFloat(labels.indexOf(results[i]["label"]))
@@ -187,11 +189,11 @@ async function canRecognizeFaces(sta){
                   "value":lab+dis
                 },
               })
-            console.log("upload successful!")    //0209  
+            console.log("192：upload successful!")    //0209  
             alert('upload successful!')    //0209            
             
             var num = 1-dis
-            var resp = "辨識結果: " + labelcc[lab] + ", 可信度: " + String(num.toFixed(2))
+            resp = "辨識結果: " + labelcc[lab] + ", 可信度: " + String(num.toFixed(2))
             //alert(resp)    //原位置
         })
         setTimeout(async () => {
