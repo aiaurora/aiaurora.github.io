@@ -1,6 +1,6 @@
 const video1 = document.getElementById('inputVideo')
 const inputtext = document.getElementById('inputtext')         
-const inputtextUser = document.getElementById('inputtextUser') //0.改為內建，AIO帳號
+//const inputtextUser = document.getElementById('inputtextUser') //0.改為內建，AIO帳號
 const username = "hylin"                               
 const mask = document.getElementById('mask')
 const loadImg = document.getElementById('loadImg')
@@ -10,7 +10,7 @@ const idn = document.getElementById('identify')  //1.增加按鈕
 // 讓輸入框圓角一點  需要 jquery-ui.min.js 和 jquery-ui.min.css
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
 
-
+/*
 // 儲存 cookie 的值(cookie的名字、cookie的值、儲存的天數)
 function setCookie(cname,cvalue,exdays)
 {
@@ -47,7 +47,7 @@ function checkCookie()
     key = getCookie("key");
     inputtext.value = key
     name = getCookie("name"); 
-    inputtextUser.value = username   //0209
+    inputtextUser.value = name
     first = true
   }
 
@@ -70,7 +70,7 @@ function checkCookie()
   last_key = key
   last_name = name
 }
-
+*/
 
 // 先讀取完模型再開啟攝影機
 Promise.all([
@@ -84,7 +84,7 @@ Promise.all([
     console.log("load models OK"),
     mask.style.display = "block",
     loadImg.style.display = "block",
-    checkCookie()
+    //checkCookie()
   ]).then(startVideo)
 
 async function startVideo(){
@@ -172,7 +172,7 @@ function recognizeFaces(){
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
       
-      checkCookie()
+      //checkCookie()
     }, 100) 
 }
 
