@@ -4,13 +4,14 @@ var labels = ['Teddy','Chuan','Jackey']  //要和*.py內容所列一致
 var labelcc = ['泰迪','茱安','宗憲']  //跳出中文
 //var username = prompt("請輸入 AIO 使用者名稱:","hylin")
 const inputtextUser = document.getElementById('inputtextUser')  //新增的
-const video1 = document.getElementById('inputVideo')
-//const conDev = document.getElementById('connDiv') 
-//const discon = document.getElementById('disconnBtn')
-//const con = document.getElementById('connBtn')
-const idn = document.getElementById('identify')
-//const connBtnImg = document.getElementById('connBtnImg')
 const inputtext = document.getElementById('inputtext')
+const video1 = document.getElementById('inputVideo')
+const idn = document.getElementById('identify')
+const conDev = document.getElementById('connDiv') 
+const discon = document.getElementById('disconnBtn')
+const con = document.getElementById('connBtn')
+const connBtnImg = document.getElementById('connBtnImg')
+
 
 // 讓輸入框圓角一點  需要 jquery-ui.min.js 和 jquery-ui.min.css
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
@@ -198,17 +199,17 @@ $('#identify').click((e) => {
 
 function loadLabel() {
   var labels_len = labels.length;
-  console.log("195.Labels數量：",labels_len)
+  console.log("Labels數量：",labels_len)
   var succ = true;
   return Promise.all(
       labels.map(async (label) => {
-          console.log("199.Label名稱：",label)
+          console.log("Label名稱：",label)
           const descriptions = []
           for (let i = 1; i <= 3; i++) {
               try {
                   //img = await faceapi.fetchImage(`./images/${label}/${i}.jpg`)  //反引號(back-tick)
                   img = await faceapi.fetchImage('./images/'+label+'/'+i+'.jpg')
-                  console.log('205.照片位置./images/'+label+'/'+i+'.jpg')
+                  console.log('照片位置:./images/'+label+'/'+i+'.jpg')
               }
               catch (e) {
                   console.log("換PNG啦")
