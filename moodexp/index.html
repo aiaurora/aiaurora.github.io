@@ -18,7 +18,7 @@
       align-items: center;
       flex-direction: column;
       font-family: "微軟正黑體", "黑體-繁", sans-serif;
-      font-size: 28px;         //40 -> 24
+      font-size: 12px;         //40 -> 12
       /* background :darkgrey;*/
       background:linear-gradient(to left, darkgrey, grey);
       /*overflow: hidden;       不能捲動視窗*/
@@ -100,8 +100,7 @@
 
 <body>
   <!--   -->
-  <p id="te">心情傳送門</p>
-  本系統只儲存傳送的心情類別，不會儲存影片及照片喔!
+  <p id="te">心情傳送門</p>  
   <div id="mask"></div>
   <img  id="loadImg"src="loadModel.gif">
   <video id="inputVideo"  autoplay muted></video>
@@ -110,6 +109,7 @@
   <input id="inputtext" type="text" name="欄位名稱" placeholder="請輸入金鑰, 並按下上傳按鈕來傳送資料">
   -->
   <button id="identify" >傳送辨識結果</button>
+  本系統只儲存傳送的心情類別，不會儲存影片及照片喔!
 </body>
 
 </html>
