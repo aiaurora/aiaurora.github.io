@@ -159,7 +159,8 @@ async function canRecognizeFaces(sta){
         results = resizedDetections.map((d) => {
             return faceMatcher.findBestMatch(d.descriptor)
         })
-
+        
+        var resp  //0209
         results.forEach((result,i) =>{
             console.log("163.最接近存檔照片的是:",results[i]["label"])     // 顯示所有偵測到的名稱(最有可能，但不一定是本人，由*.py再做篩選)
             lab = parseFloat(labels.indexOf(results[i]["label"]))
@@ -177,8 +178,7 @@ async function canRecognizeFaces(sta){
               })
             //var resp = prompt("辨識結果:",labelcc[lab])  //增加中文結果
             var num = 1-dis
-            var resp = "辨識結果: " + labelcc[lab] + ", 可信度: " + String(num.toFixed(2))
-            alert(resp)
+            resp = "辨識結果: " + labelcc[lab] + ", 可信度: " + String(num.toFixed(2))            
                   
             const box = resizedDetections[i].detection.box
             const drawBox = new faceapi.draw.DrawBox(box, { label: result })
@@ -186,6 +186,7 @@ async function canRecognizeFaces(sta){
         })
         setTimeout(async () => {
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
+            alert(resp)  //0209
         },1000)
     }
 }
