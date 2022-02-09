@@ -216,7 +216,7 @@ function loadLabel() {
               try {
                   //img = await faceapi.fetchImage(`./images/${label}/${i}.jpg`)  //反引號(back-tick)
                   img = await faceapi.fetchImage('./images/'+label+'/'+i+'.jpg')
-                  console.log('照片位置./images/'+label+'/'+i+'.jpg')
+                  console.log('照片位置： ./images/'+label+'/'+i+'.jpg')
               }
               catch (e) {
                   console.log("換PNG啦")
