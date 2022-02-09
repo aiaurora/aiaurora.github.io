@@ -187,15 +187,18 @@ async function canRecognizeFaces(sta){
                   "value":lab+dis
                 },
               })
-            //var resp = prompt("辨識結果:",labelcc[lab])  //增加中文結果
+            alert('upload successful!')    //0209            
+            
             var num = 1-dis
             var resp = "辨識結果: " + labelcc[lab] + ", 可信度: " + String(num.toFixed(2))
             //alert(resp)    //原位置
         })
         setTimeout(async () => {
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-        },100)   //0209：1000 -> 100
-        alert(resp)
+            
+            alert(resp)    //0209位置
+        },1000)
+        
     }
 }
 
