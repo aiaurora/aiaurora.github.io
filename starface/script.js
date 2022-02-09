@@ -97,7 +97,7 @@ Promise.all([
     //inputtext.style.height = video1.offsetHeight.toString()/8+"px",
     mask.style.display = "block",
     loadImg.style.display = "block",
-    checkCookie(),        
+    //checkCookie(),        
     faceapi.nets.ssdMobilenetv1.loadFromUri('./models'),
     faceapi.nets.faceRecognitionNet.loadFromUri('./models'), 
     faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
