@@ -52,7 +52,7 @@ function checkCookie()
 
   key = inputtext.value
   name = inputtextUser.value
-  console.log("key: ",key," name:",name)   //0210
+  
   //if (key != "" && key != null)
   if(key != last_key)
   {
