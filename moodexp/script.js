@@ -1,7 +1,7 @@
 const video1 = document.getElementById('inputVideo')
 const inputtext = document.getElementById('inputtext')
 const inputtextUser = document.getElementById('inputtextUser')
-const outputtext = document.getElementById('outputtext')
+//const outputtext = document.getElementById('outputtext')
 const mask = document.getElementById('mask')
 const loadImg = document.getElementById('loadImg')
 
@@ -79,7 +79,7 @@ Promise.all([
     faceapi.nets.faceRecognitionNet.loadFromUri('./models'),   
     faceapi.nets.faceExpressionNet.loadFromUri('./models'),    // 心情
     
-    console.log("load models OK"),
+    console.log("load models OK(no output)"),
     mask.style.display = "block",
     loadImg.style.display = "block",
     checkCookie()
