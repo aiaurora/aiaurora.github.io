@@ -140,8 +140,7 @@ function recognizeFaces(){
       const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()   
       const resizedDetections2 = faceapi.resizeResults(detections2, displaySize) 
       //moods = detections2[0]['expressions']      // 心情 
-      moods = resizedDetections2[0]['expressions']      // 心情           
-      console.log("辨識出：",moods)  //0210
+      moods = resizedDetections2[0]['expressions']      // 心情
       
       /*
       if(resizedDetections.length >= 1){
