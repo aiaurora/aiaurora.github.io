@@ -95,7 +95,7 @@ Promise.all([
     faceapi.nets.ssdMobilenetv1.loadFromUri('./models'),
     faceapi.nets.faceRecognitionNet.loadFromUri('./models'), 
     faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
-    console.log("模型載入成功"),
+    console.log("load models OK"),
     ]).then(startVideo)
 
 async function startVideo(){
@@ -134,7 +134,7 @@ function  changeCanvasSize(){
 async function canRecognizeFaces(sta){
     if(init == false){
         console.log(init)
-        console.log("初始化成功")
+        console.log("init success")    //初始化成功
         labeledDescriptors = await loadLabel()
         // 描述標籤
         console.log(labeledDescriptors)
@@ -193,7 +193,7 @@ async function canRecognizeFaces(sta){
 }
 
 $('#identify').click((e) => {
-    console.log("辨識")
+    console.log("執行辨識")
     canRecognizeFaces(1);
 });
 
