@@ -139,7 +139,7 @@ function recognizeFaces(){
       const resizedDetections2 = faceapi.resizeResults(detections2, displaySize) 
       //moods = detections2[0]['expressions']      // 心情 
       moods = resizedDetections2[0]['expressions']      // 心情           
-      console.log(moods)  //0210
+      console.log("辨識出：",moods)  //0210
       
       /*
       if(resizedDetections.length >= 1){
