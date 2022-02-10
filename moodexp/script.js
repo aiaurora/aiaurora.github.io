@@ -1,7 +1,7 @@
 const video1 = document.getElementById('inputVideo')
 const inputtext = document.getElementById('inputtext')
 const inputtextUser = document.getElementById('inputtextUser')
-const outputtext = document.getElementById('outputtext')
+//const outputtext = document.getElementById('outputtext')
 const mask = document.getElementById('mask')
 const loadImg = document.getElementById('loadImg')
 
@@ -52,7 +52,7 @@ function checkCookie()
 
   key = inputtext.value
   name = inputtextUser.value
-
+  console.log("key: ",key," name:",name)   //0210
   //if (key != "" && key != null)
   if(key != last_key)
   {
