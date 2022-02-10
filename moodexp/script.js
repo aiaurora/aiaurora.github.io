@@ -177,7 +177,7 @@ function recognizeFaces(){
 
 $('#identify').click((e) => {      //5.按鈕作用
     console.log("執行辨識")
-            
+    console.log("上傳username：",inputtextUser.value," key:inputtext.value")     //0210  
     //{key:value}物件轉為陣列型態[{key,value}]    
     var moodsArray = Object.keys(moods).map(key => {
           return {
