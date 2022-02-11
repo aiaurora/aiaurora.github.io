@@ -1,6 +1,7 @@
 const video1 = document.getElementById('inputVideo')
 const inputtext = document.getElementById('inputtext')
 const inputtextUser = document.getElementById('inputtextUser')
+console.log("original inputtextUser:",inputtextUser.value)  //0212
 const outputtext = document.getElementById('outputtext')
 const mask = document.getElementById('mask')
 const loadImg = document.getElementById('loadImg')
