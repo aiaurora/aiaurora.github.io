@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="oxxo.studio">
+  <meta name="copyright" content="oxxo.studio">
+  <title>demo</title>
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <style>
+  	input{
+  		width:300px;
+  		font-size:15px;
+  		margin:2px 0;
+  		padding:2px 5px;
+  	}
+  </style>
+</head>
+
+<body>
+  結果1：<input id="r1"><br/> 
+  結果2：<input id="r2"><br/>  
+  <button id="sendBtn">查詢</button><br/>
+  <h2 id="show1"></h2>
+  <h2 id="show2"></h2>
+  <script>
+  var sendBtn = $('#sendBtn'),
+      show1 = $('#show1');
+      show2 = $('#show2');
+      r1 = $('#r1'),
+      r2 = $('#r2'),
+  var parameter = {};
+  sendBtn.on('click',function() {
+    parameter1 = {
+      url: 'https://docs.google.com/spreadsheets/d/19eTB91djfzfwxryM4sfnlDYsR5CI8MyRrtJyB7fivak/edit#gid=0',
+      name: '工作表1',
+      startRow: 2,
+      startColumn: 1
+    };
+	  $.get('https://script.google.com/macros/s/AKfycby5fYMQ3-MTCl4iE2oYc_IZMkfX8k9vIoHGOqzS3_Ylo8ZqhRZCEQTtC48WeHZ2KWcVFQ/exec', parameter1, function(data) {
+	  	if(!data){
+	    	show1.text('無資料');
+	  	}else{
+	    	show1.text(data);
+	    	r1.text(data);
+	    	console.log(data);
+	  	}
+	  });
+	  parameter2 = {
+      url: 'https://docs.google.com/spreadsheets/d/19eTB91djfzfwxryM4sfnlDYsR5CI8MyRrtJyB7fivak/edit#gid=0',
+      name: '工作表1',
+      startRow: 2,
+      startColumn: 2
+    };
+	  $.get('https://script.google.com/macros/s/AKfycby5fYMQ3-MTCl4iE2oYc_IZMkfX8k9vIoHGOqzS3_Ylo8ZqhRZCEQTtC48WeHZ2KWcVFQ/exec', parameter2, function(data) {
+	  	if(!data){
+	    	show2.text('無資料');
+	  	}else{
+	    	show2.text(data);
+	    	r2.text(data);
+	    	console.log(data);
+	  	}
+	  });
+  });
+
+  </script>
+
+  
+  <style>
+  #info {
+    position: fixed;
+    z-index: 999;
+    bottom: 20px;
+    left: 0px;
+    background: #222;
+    padding: 20px 30px;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, .5) 0 0 10px;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  #info a {
+    color: #0bf;
+    transition: .2s;
+  }
+  
+  #info a:hover {
+    color: #6df;
+  }
+  </style>
+  <div id="info">相關參考：<a id="infoLink" href="#" target="_blank"></a></div>
+  <script>
+  var href = location.href;
+  var page = href.split("demo/");
+  var name = page[1].split("-demo")[0];
+  var title = document.querySelector('title').innerHTML;
+  document.getElementById('infoLink').setAttribute('href', '/articles/' + name + '.html');
+  document.getElementById('infoLink').innerHTML = title.split("demo")[0];
+  </script>
+</body>
+
+</html>
