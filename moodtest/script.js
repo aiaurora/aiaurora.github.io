@@ -44,12 +44,17 @@ function checkCookie()
   if(first == false){
     // 從 Cookie 中取值
     key = getCookie("key");
-    inputtext.value = key
+    inputtext.value = "aio_K" + key       //0212+
     name = getCookie("name");
-    inputtextUser.value = name
+    inputtextUser.value = "h" + name       //0212+
     first = true
   }
 
+  if (!inputtextUser.includes("h")) {           //0212+
+     inputtext.value = "aio_K" + inputtext.value
+     inputtextUser.value = "h" + inputtextUser.value     
+  } 
+  
   key = inputtext.value
   name = inputtextUser.value
 
@@ -192,6 +197,12 @@ $('#identify').click((e) => {      //5.按鈕作用
     console.log("moodArray_sorted#1:", mood)  
   
     var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")  //6.加確認用提示
+    
+    if (!inputtextUser.includes("h")) {           //0212+
+     inputtext.value = "aio_K" + inputtext.value
+     inputtextUser.value = "h" + inputtextUser.value     
+    } 
+    
     $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
     data:{"value":moodlabels[0]},  //7.mood改為moodlabels[0]
            type: "POST"
