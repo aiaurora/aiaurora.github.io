@@ -24,6 +24,8 @@
   <h2 id="show1"></h2>
   <h2 id="show2"></h2>
   <script>
+  const urlconst = 'https://docs.google.com/spreadsheets/d/19eTB91djfzfwxryM4sfnlDYsR5CI8MyRrtJyB7fivak/edit#gid=0',
+  const gasconst = 'https://script.google.com/macros/s/AKfycbylw4jLoz8BIXcYQ3OleZmPP363ieHsKU_xUG1VeVmFSvbneK3A7aZRoY2ncXwPHG8u9A/exec',
   var sendBtn = $('#sendBtn'),
       show1 = $('#show1');
       show2 = $('#show2');
@@ -32,12 +34,12 @@
   var parameter = {};
   sendBtn.on('click',function() {
     parameter = {
-      url: 'https://docs.google.com/spreadsheets/d/19eTB91djfzfwxryM4sfnlDYsR5CI8MyRrtJyB7fivak/edit#gid=0',
+      url: urlconst,
       name: '工作表1',
       startRow: 2,
       startColumn: 1
     };
-	  $.get('https://script.google.com/macros/s/AKfycby5fYMQ3-MTCl4iE2oYc_IZMkfX8k9vIoHGOqzS3_Ylo8ZqhRZCEQTtC48WeHZ2KWcVFQ/exec', parameter, function(data) {
+	  $.get(gasconst, parameter, function(data) {
 	  	if(!data){
 	    	show1.text('無資料');
 	  	}else{
@@ -46,13 +48,13 @@
 	    	console.log(data);
 	  	}
 	  });
-    parameter = {
-      url: 'https://docs.google.com/spreadsheets/d/19eTB91djfzfwxryM4sfnlDYsR5CI8MyRrtJyB7fivak/edit#gid=0',
+	parameter = {
+      url: urlconst,
       name: '工作表1',
       startRow: 2,
       startColumn: 2
     };
-	  $.get('https://script.google.com/macros/s/AKfycby5fYMQ3-MTCl4iE2oYc_IZMkfX8k9vIoHGOqzS3_Ylo8ZqhRZCEQTtC48WeHZ2KWcVFQ/exec', parameter, function(data) {
+	  $.get(gasconst, parameter, function(data) {
 	  	if(!data){
 	    	show2.text('無資料');
 	  	}else{
