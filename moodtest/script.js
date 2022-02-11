@@ -1,7 +1,7 @@
 const video1 = document.getElementById('inputVideo')
 const inputtext = document.getElementById('inputtext')
 const inputtextUser = document.getElementById('inputtextUser')
-console.log("original inputtextUser:",inputtextUser.value)  //0212
+console.log("const inputtextUser:",inputtextUser.value)  //0212
 const outputtext = document.getElementById('outputtext')
 const mask = document.getElementById('mask')
 const loadImg = document.getElementById('loadImg')
@@ -45,19 +45,26 @@ function checkCookie()
   if(first == false){
     // 從 Cookie 中取值
     key = getCookie("key");
-    inputtext.value = "aio_K" + key       //0212+
+    inputtext.value = key 
+    //inputtext.value = "aio_K" + key       //0212+
+    console.log("50 inputtext:",inputtext.value)  //0212
     name = getCookie("name");
-    inputtextUser.value = "h" + name       //0212+
+    inputtextUser.value = name
+    //inputtextUser.value = "h" + name       //0212+
+    console.log("54 inputtextUser:",inputtextUser.value)  //0212
     first = true
   }
 
-  if (!inputtextUser.includes("h")) {           //0212+
-     inputtext.value = "aio_K" + inputtext.value
-     inputtextUser.value = "h" + inputtextUser.value     
-  } 
+  //if (!inputtextUser.includes("h")) {           //0212+
+  //   inputtext.value = "aio_K" + inputtext.value
+  //   inputtextUser.value = "h" + inputtextUser.value     
+  //} 
   
   key = inputtext.value
   name = inputtextUser.value
+  console.log("63 key:",key)  //0212
+  console.log("64 key:",name)  //0212
+  
 
   //if (key != "" && key != null)
   if(key != last_key)
