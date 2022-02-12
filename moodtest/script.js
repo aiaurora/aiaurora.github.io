@@ -47,7 +47,7 @@ function checkCookie()
     // 從 Cookie 中取值
     key = getCookie("key");
     //inputtext.value = key 
-    inputtext.value = key + "msD57ndY6KVG1ihCyNCmXH4lQGw"        //0212+
+    inputtext.value = key + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"        //0212+
     console.log("51 inputtext:",inputtext.value)  //0212
     name = getCookie("name");
     inputtextUser.value = name
@@ -55,8 +55,8 @@ function checkCookie()
     first = true
   }
 
-  if (!inputtext.value.includes("msD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
-     inputtext.value = inputtext.value + "msD57ndY6KVG1ihCyNCmXH4lQGw"
+  if (!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
+     inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"
   } 
   
   key = inputtext.value
@@ -205,8 +205,8 @@ $('#identify').click((e) => {      //5.按鈕作用
   
     var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")  //6.加確認用提示
     
-    if (!inputtext.value.includes("msD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
-     inputtext.value = inputtext.value + "msD57ndY6KVG1ihCyNCmXH4lQGw"
+    if (!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
+     inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"
     } 
     
     $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
