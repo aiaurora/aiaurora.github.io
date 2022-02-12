@@ -216,7 +216,7 @@ $('#identify').click((e) => {      //5.比age多按鈕作用
     console.log("moodArray_sorted#1:", mood)  
   
     var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")  //6.加確認用提示
-    
+    alert("我的心情: " + moodlabels) //0212
     //正確完整賦值 0212
     inputtext.value = ""
     if (!inputtext.value.includes("aio")) {           
