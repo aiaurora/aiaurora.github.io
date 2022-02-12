@@ -1,6 +1,6 @@
 // 定義名稱。要與 images 資料夾內相同名稱 
 //var labels = prompt("請輸入名稱並以逗號隔開人名:","Teddy,Chuan").toString().split(",")
-var labels = ['Jolin','TzuYu','ChiLing']  //要和*.py內容所列一致
+var labels = ['Jolin','TzuYu','ChiLing']
 var labelcc = ['蔡依林','周子瑜','林志玲']  //跳出中文
 //const inputtextUser = document.getElementById('inputtextUser')  //0209no
 //const inputtext = document.getElementById('inputtext')   //0209no
@@ -170,7 +170,7 @@ async function canRecognizeFaces(sta){
         var resp  //0209改為global var , alert(resp)才能在為box之後
         
         results.forEach((result,i) =>{
-            console.log("最接近存檔照片的是:",results[i]["label"])     // 顯示所有偵測到的名稱(最有可能，但不一定是本人，由*.py再做篩選)
+            console.log("最接近存檔照片的是:",results[i]["label"])     // 顯示所有偵測到的名稱(最有可能，但不一定是本人)
             lab = parseFloat(labels.indexOf(results[i]["label"]))
             dis = parseFloat(results[i]["distance"])
             //console.log(labels.indexOf(results[i]["label"]))
