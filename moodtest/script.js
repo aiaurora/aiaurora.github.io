@@ -1,9 +1,9 @@
 const video1 = document.getElementById('inputVideo')
-const inputtext = document.getElementById('inputtext')
-console.log("3 inputtext:",inputtext.value)  //0212
-const inputtextUser = document.getElementById('inputtextUser')
-console.log("5 inputtextUser:",inputtextUser.value)  //0212
-const outputtext = document.getElementById('outputtext')
+var inputtextUser = document.getElementById('inputtextUser')
+var inputtext = document.getElementById('inputtext')
+console.log("4 inputtextUser:",inputtextUser.value)  //0212
+console.log("5 inputtext:",inputtext.value)  //0212
+//const outputtext = document.getElementById('outputtext')
 const mask = document.getElementById('mask')
 const loadImg = document.getElementById('loadImg')
 
@@ -46,25 +46,23 @@ function checkCookie()
   if(first == false){
     // 從 Cookie 中取值
     key = getCookie("key");
-    inputtext.value = key 
-    //inputtext.value = "aio_K" + key       //0212+
-    console.log("50 inputtext:",inputtext.value)  //0212
+    //inputtext.value = key 
+    inputtext.value = key + "msD57ndY6KVG1ihCyNCmXH4lQGw"        //0212+
+    console.log("51 inputtext:",inputtext.value)  //0212
     name = getCookie("name");
     inputtextUser.value = name
-    //inputtextUser.value = "h" + name       //0212+
     console.log("54 inputtextUser:",inputtextUser.value)  //0212
     first = true
   }
 
-  //if (!inputtextUser.includes("h")) {           //0212+
-  //   inputtext.value = "aio_K" + inputtext.value
-  //   inputtextUser.value = "h" + inputtextUser.value     
-  //} 
+  if (!inputtext.includes("msD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
+     inputtext.value = inputtext.value + "msD57ndY6KVG1ihCyNCmXH4lQGw"
+  } 
   
   key = inputtext.value
   name = inputtextUser.value
-  console.log("63 key:",key)  //0212
-  console.log("64 key:",name)  //0212
+  console.log("64 key:",key)  //0212
+  console.log("65 name:",name)  //0212
   
 
   //if (key != "" && key != null)
@@ -207,9 +205,8 @@ $('#identify').click((e) => {      //5.按鈕作用
   
     var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")  //6.加確認用提示
     
-    if (!inputtextUser.includes("h")) {           //0212+
-     inputtext.value = "aio_K" + inputtext.value
-     inputtextUser.value = "h" + inputtextUser.value     
+    if (!inputtext.includes("msD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
+     inputtext.value = inputtext.value + "msD57ndY6KVG1ihCyNCmXH4lQGw"
     } 
     
     $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
