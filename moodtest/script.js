@@ -46,13 +46,13 @@ function checkCookie()
   if(first == false){
     // 從 Cookie 中取值
     key = getCookie("key");
-    console.log("49 key:",key)  //0212
+    console.log("49 init key:",key)  //0212
     inputtext.value = key
-    console.log("51 inputtext:",inputtext.value)  //0212
+    console.log("51 init inputtext:",inputtext.value)  //0212
     name = getCookie("name");
-    console.log("53 name:",name)  //0212
+    console.log("53 init name:",name)  //0212
     inputtextUser.value = name
-    console.log("55 inputtextUser:",inputtextUser.value)  //0212
+    console.log("55 init inputtextUser:",inputtextUser.value)  //0212
     first = true
   }
 
@@ -60,10 +60,12 @@ function checkCookie()
      inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"
   } 
   
+  console.log("63 non-init inputtext.value:",inputtext.value)  //0212
+  console.log("64 non-init inputtextUser.value:",inputtextUser.value)  //0212
   key = inputtext.value
   name = inputtextUser.value
-  console.log("65 key:",key)  //0212
-  console.log("66 name:",name)  //0212
+  console.log("67 non-init key:",key)  //0212
+  console.log("68 non-init name:",name)  //0212
   
 
   //if (key != "" && key != null)
