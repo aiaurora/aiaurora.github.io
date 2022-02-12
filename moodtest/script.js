@@ -46,13 +46,13 @@ function checkCookie()
   if(first == false){
     // 從 Cookie 中取值
     key = getCookie("key");
-    console.log("49 init key:",key)  //0212
+    console.log("49 initfalse key:",key)  //0212
     inputtext.value = key
-    console.log("51 init inputtext:",inputtext.value)  //0212
+    console.log("51 initfalse inputtext:",inputtext.value)  //0212
     name = getCookie("name");
-    console.log("53 init name:",name)  //0212
+    console.log("53 initfalse name:",name)  //0212
     inputtextUser.value = name
-    console.log("55 init inputtextUser:",inputtextUser.value)  //0212
+    console.log("55 initfalse inputtextUser:",inputtextUser.value)  //0212
     first = true
   }
   
@@ -61,7 +61,7 @@ function checkCookie()
   if (!inputtext.value.includes("aio")) {           
      inputtext.value = "aio";
   }
-  else if(!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           
+  if(!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           
      inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw";
   }  
   inputtextUser.value = ""
@@ -73,8 +73,8 @@ function checkCookie()
   console.log("73 complete inputtextUser.value:",inputtextUser.value)  //0212
   key = inputtext.value
   name = inputtextUser.value
-  console.log("76 non-init key:",key)  //0212
-  console.log("77 non-init name:",name)  //0212
+  console.log("76 inittrue key:",key)  //0212
+  console.log("77 inittrue name:",name)  //0212
   
 
   //if (key != "" && key != null)
@@ -222,7 +222,7 @@ $('#identify').click((e) => {      //5.按鈕作用
     if (!inputtext.value.includes("aio")) {           
        inputtext.value = "aio";
     }
-    else if(!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           
+    if(!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           
        inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw";
     }  
     inputtextUser.value = ""
