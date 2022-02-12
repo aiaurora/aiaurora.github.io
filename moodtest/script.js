@@ -1,13 +1,13 @@
 const video1 = document.getElementById('inputVideo')
-var inputtextUser = document.getElementById('inputtextUser')
-var inputtext = document.getElementById('inputtext')
-console.log("4 var inputtextUser:",inputtextUser.value)  //0212
-console.log("5 var inputtext:",inputtext.value)  //0212
+var inputtextUser = document.getElementById('inputtextUser')  //要保留是為了cookie 0212
+var inputtext = document.getElementById('inputtext')  //要保留是為了cookie 0212
+console.log("4 var inputtextUser:",inputtextUser.value)  //有cookie最好，但增加難度 0212
+console.log("5 var inputtext:",inputtext.value)  //有cookie最好，但增加難度0212
 //const outputtext = document.getElementById('outputtext')
 const mask = document.getElementById('mask')
 const loadImg = document.getElementById('loadImg')
 
-const idn = document.getElementById('identify')  //1.增加按鈕
+const idn = document.getElementById('identify')  //1.比age多了按鈕
 
 // 讓輸入框圓角一點  需要 jquery-ui.min.js 和 jquery-ui.min.css
 $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield");
@@ -161,7 +161,7 @@ function recognizeFaces(){
       // 心情與結果    
       const detections2 = await faceapi.detectAllFaces(video1, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()   
       const resizedDetections2 = faceapi.resizeResults(detections2, displaySize) 
-      //moods = detections2[0]['expressions']      // 心情 
+      //moods = detections2[0]['expressions']      // 心情 (也可以)
       moods = resizedDetections2[0]['expressions']      // 心情           
       
       /*
@@ -198,7 +198,7 @@ function recognizeFaces(){
     }, 100) 
 }
 
-$('#identify').click((e) => {      //5.按鈕作用
+$('#identify').click((e) => {      //5.比age多按鈕作用
     console.log("執行辨識")
             
     //{key:value}物件轉為陣列型態[{key,value}]    
