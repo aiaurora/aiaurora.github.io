@@ -59,14 +59,14 @@ function checkCookie()
   //正確完整賦值  0212
   inputtext.value = ""
   if (!inputtext.value.includes("aio")) {           
-     inputtext.value = "aio"
+     inputtext.value = "aio";
   }
   else if(!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           
-     inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"
+     inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw";
   }  
   inputtextUser.value = ""
    if (!inputtextUser.value.includes("hylin")) {           
-     inputtextUser.value = ""hylin" + inputtextUser.value 
+     inputtextUser.value = "hylin";
   }  
   
   console.log("72 complete inputtext.value:",inputtext.value)  //0212
@@ -220,14 +220,14 @@ $('#identify').click((e) => {      //5.按鈕作用
     //正確完整賦值 0212
     inputtext.value = ""
     if (!inputtext.value.includes("aio")) {           
-       inputtext.value = "aio"
+       inputtext.value = "aio";
     }
     else if(!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           
-       inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"
+       inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw";
     }  
     inputtextUser.value = ""
     if (!inputtextUser.value.includes("hylin")) {           
-       inputtextUser.value = ""hylin" + inputtextUser.value 
+       inputtextUser.value = "hylin";
     }  
     
     $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
