@@ -59,7 +59,7 @@ function checkCookie()
   //正確完整賦值  0212
   inputtext.value = ""
   if (!inputtext.value.includes("aio")) {           
-     inputtext.value = "aio" + "inputtext.value 
+     inputtext.value = "aio"
   }
   else if(!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           
      inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"
@@ -220,7 +220,7 @@ $('#identify').click((e) => {      //5.按鈕作用
     //正確完整賦值 0212
     inputtext.value = ""
     if (!inputtext.value.includes("aio")) {           
-       inputtext.value = "aio" + "inputtext.value 
+       inputtext.value = "aio"
     }
     else if(!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           
        inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"
