@@ -55,17 +55,26 @@ function checkCookie()
     console.log("55 init inputtextUser:",inputtextUser.value)  //0212
     first = true
   }
-
-  if (!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
-     inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"
-  } 
   
-  console.log("63 non-init inputtext.value:",inputtext.value)  //0212
-  console.log("64 non-init inputtextUser.value:",inputtextUser.value)  //0212
+  //正確完整賦值  0212
+  inputtext.value = ""
+  if (!inputtext.value.includes("aio")) {           
+     inputtext.value = "aio" + "inputtext.value 
+  }
+  else if(!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           
+     inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"
+  }  
+  inputtextUser.value = ""
+   if (!inputtextUser.value.includes("hylin")) {           
+     inputtextUser.value = ""hylin" + inputtextUser.value 
+  }  
+  
+  console.log("72 complete inputtext.value:",inputtext.value)  //0212
+  console.log("73 complete inputtextUser.value:",inputtextUser.value)  //0212
   key = inputtext.value
   name = inputtextUser.value
-  console.log("67 non-init key:",key)  //0212
-  console.log("68 non-init name:",name)  //0212
+  console.log("76 non-init key:",key)  //0212
+  console.log("77 non-init name:",name)  //0212
   
 
   //if (key != "" && key != null)
@@ -208,9 +217,18 @@ $('#identify').click((e) => {      //5.按鈕作用
   
     var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")  //6.加確認用提示
     
-    if (!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
-     inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"
-    } 
+    //正確完整賦值 0212
+    inputtext.value = ""
+    if (!inputtext.value.includes("aio")) {           
+       inputtext.value = "aio" + "inputtext.value 
+    }
+    else if(!inputtext.value.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           
+       inputtext.value = inputtext.value + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw"
+    }  
+    inputtextUser.value = ""
+    if (!inputtextUser.value.includes("hylin")) {           
+       inputtextUser.value = ""hylin" + inputtextUser.value 
+    }  
     
     $.ajax({url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/mood/data?X-AIO-Key="+inputtext.value,
     data:{"value":moodlabels[0]},  //7.mood改為moodlabels[0]
