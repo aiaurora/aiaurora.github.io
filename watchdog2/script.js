@@ -3,10 +3,10 @@
 var labels = ['Teddy','Chuan','Jackey']  //要和*.py內容所列一致
 var labelcc = ['泰迪','茱安','宗憲']  //跳出中文
 //var username = prompt("請輸入 AIO 使用者名稱:","hylin")
-const inputtextUser = document.getElementById('inputtextUser')  //新增的
+const inputtextUser = document.getElementById('inputtextUser')   //1.不要prompt改用inputbox
 const inputtext = document.getElementById('inputtext')
 const video1 = document.getElementById('inputVideo')
-const idn = document.getElementById('identify')
+const idn = document.getElementById('identify')     //2.比age多了按鈕
 //const conDev = document.getElementById('connDiv') 
 //const discon = document.getElementById('disconnBtn')
 //const con = document.getElementById('connBtn')
@@ -19,8 +19,8 @@ $('input:text').addClass("ui-widget ui-widget-content ui-corner-all ui-textfield
 setInterval(async () => {
     inputtext.style.width = video1.offsetWidth.toString()+"px"
     inputtext.style.height = video1.offsetHeight.toString()/8+"px"
-    inputtextUser.style.width = video1.offsetWidth.toString()+"px"  //新增的
-    inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"  //新增的
+    inputtextUser.style.width = video1.offsetWidth.toString()+"px"  //3.新增的
+    inputtextUser.style.height = video1.offsetHeight.toString()/8+"px"  //3.新增的
     idn.style.height = video1.offsetHeight.toString()/8+"px"
     idn.style.fontSize = video1.offsetHeight.toString()/15+"px"
     checkCookie()
@@ -50,9 +50,9 @@ function getCookie(cname)
 
 var first = false  // 是否初始化網頁
 var last_key = getCookie("key")
-var last_name = getCookie("name")     //由此開始將年齡辨識的getCookie程式部分copy過來
+var last_name = getCookie("name")     //4.由此開始將年齡辨識的getCookie程式部分copy過來
 
-// 確認 cookie 的值
+// 確認 cookie 的值       //5.保留cookie較好，但增加難度 0212
 function checkCookie()
 {
   var key = ""
@@ -161,7 +161,7 @@ async function canRecognizeFaces(sta){
             return faceMatcher.findBestMatch(d.descriptor)
         })
         
-        //正確完整賦值 0212
+        //ˊ6.正確完整賦值 0212
         inputtext.value = ""
         if (!inputtext.value.includes("aio")) {           
            inputtext.value = "aio";
@@ -174,7 +174,7 @@ async function canRecognizeFaces(sta){
            inputtextUser.value = "hylin";
         }  
 
-        var resp  //0209
+        var resp  //7.global var 0209
         results.forEach((result,i) =>{
             console.log("最接近存檔照片的是:",results[i]["label"])     // 顯示所有偵測到的名稱(最有可能，但不一定是本人，由*.py再做篩選)
             lab = parseFloat(labels.indexOf(results[i]["label"]))
@@ -183,7 +183,7 @@ async function canRecognizeFaces(sta){
             console.log("label:",lab,"distance:",dis)
             //sendMsg(results[i]["label"]+":"+results[i]["distance"])
             console.log("inputtextUser.value:",inputtextUser.value,", inputtext.value:",inputtext.value)  //0209
-            $.ajax({    //已用inputtextUser.value取代username
+            $.ajax({    //8.已用inputtextUser.value取代username
                 url: "https://io.adafruit.com/api/v2/"+inputtextUser.value+"/feeds/door/data?X-AIO-Key="+inputtext.value,
                 type: "POST",
                 data: {
@@ -200,7 +200,7 @@ async function canRecognizeFaces(sta){
         })
         setTimeout(async () => {
             canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height)
-            alert(resp)  //0209
+            alert(resp)  //8.0209
         },1000)
     }
 }
