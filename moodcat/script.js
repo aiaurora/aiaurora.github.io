@@ -1,7 +1,7 @@
 const video1 = document.getElementById('inputVideo')
 var inputtextUser = document.getElementById('inputtextUser')  //要保留是為了cookie 0212
 var inputtext = document.getElementById('inputtext')  //要保留是為了cookie 0212
-console.log("4 var inputtextUser:",inputtextUser.value)  //有cookie最好，但增加難度 0212
+console.log("4 var inputtextUser:",inputtextUser.value)  //因為要隨時偵測所以要有cookie，但增加難度 0212
 console.log("5 var inputtext:",inputtext.value)  //有cookie最好，但增加難度0212
 //const outputtext = document.getElementById('outputtext')
 const mask = document.getElementById('mask')
