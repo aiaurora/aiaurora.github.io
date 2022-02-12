@@ -55,7 +55,7 @@ function checkCookie()
     first = true
   }
 
-  if (!inputtext.includes("msD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
+  if (!inputtext.value.includes("msD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
      inputtext.value = inputtext.value + "msD57ndY6KVG1ihCyNCmXH4lQGw"
   } 
   
@@ -205,7 +205,7 @@ $('#identify').click((e) => {      //5.按鈕作用
   
     var moodlabels = prompt("要不要修改呢?!我的心情(neutral,happy,angry,sad,surprised):",mood).toString().split(",")  //6.加確認用提示
     
-    if (!inputtext.includes("msD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
+    if (!inputtext.value.includes("msD57ndY6KVG1ihCyNCmXH4lQGw")) {           //0212+
      inputtext.value = inputtext.value + "msD57ndY6KVG1ihCyNCmXH4lQGw"
     } 
     
