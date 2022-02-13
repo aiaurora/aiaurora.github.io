@@ -44,6 +44,23 @@
         aio_k = document.getElementById("activekey").value;
         // Adafruit feed name 
         aio_f = document.getElementById("feed").value; 
+        
+        //正確完整賦值 0213
+        aio_k = ""
+        if (!aio_k.includes("aio")) {           
+           aio_k = "aio";
+        }
+        if(!aio_k.includes("_KmsD57ndY6KVG1ihCyNCmXH4lQGw")) {           
+           aio_k = aio_k + "_KmsD57ndY6KVG1ihCyNCmXH4lQGw";
+        }  
+        aio_n = ""
+        if (!aio_n.includes("hylin")) {           
+           aio_n = "hylin";
+        }
+        aio_f = ""
+        if (!aio_f.includes("mood")) {           
+           aio_f = "mood";
+        }
 
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
