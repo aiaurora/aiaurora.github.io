@@ -1,0 +1,212 @@
+<head>
+    <title>
+        心情傳送門(TM)
+    </title>
+<style>
+    html,
+    body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        background: linear-gradient(135deg, rgb(160, 205, 255) 0%, rgb(152, 209, 255) 45%, rgb(199, 242, 255) 75%, rgb(77, 148, 255) 100%);
+        background-color: rgb(203, 236, 255);
+    }
+    h1{
+        text-align: center;
+        color: rgb(66, 0, 68);
+    }
+    #startBtn{
+        background-color: rgb(128, 128, 128); 
+        width: 40%; 
+        height: 10vh; 
+        border-radius: 10px; 
+        color: rgb(65, 65, 65);
+        font-size: xx-large;
+        margin-top: 10px;
+        /* border: 5px solid rgb(128, 128, 128); */
+        border: outset;
+        /* padding-top: 50px; */
+        box-shadow: inset 0 -8px 0 0 rgba(0, 0, 0, .2),
+            1px 1px 0 0 #25576f,
+            2px 2px 0 0 #25576f,
+            3px 3px 0 0 #25576f,
+            4px 4px 0 0 #25576f,
+            5px 5px 0 0 #25576f;
+    }
+    #sendBtn{
+        background-color: rgb(200, 255, 0); 
+        width: 40%; 
+        height: 10vh; 
+        border-radius: 10px; 
+        color: rgb(0, 0, 0);
+        font-size: xx-large;
+        margin: auto;
+        margin-top: 10px;
+        border: outset;
+        display: none;
+        /* padding-top: 50px; */
+        box-shadow: inset 0 -8px 0 0 rgba(0, 0, 0, .2),
+            1px 1px 0 0 #25576f,
+            2px 2px 0 0 #25576f,
+            3px 3px 0 0 #25576f,
+            4px 4px 0 0 #25576f,
+            5px 5px 0 0 #25576f;
+    }
+    .inputtext{
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: large;
+        
+    }
+    .msgbox{
+        text-align: center;
+        font-size:x-large;
+        border-radius: 15px;
+        background-color: rgb(133, 200, 202);
+        opacity: 80%;
+        border: 5px solid rgb(65, 65, 65);
+        width: 80%;
+        margin: auto;
+        padding: 20px;
+        box-shadow: inset 0 -8px 0 0 rgba(0, 0, 0, .2),
+            1px 1px 0 0 #25576f,
+            2px 2px 0 0 #25576f,
+            3px 3px 0 0 #25576f,
+            4px 4px 0 0 #25576f,
+            5px 5px 0 0 #25576f;
+        /* display: none; */
+    }
+ 
+    .left {
+        text-align: left;
+        float: left;
+        /* padding-left: 3%; */
+        font-size: large;
+    }
+    
+    .right {
+        height: 100vh;
+        width: 50%;
+        /* background-color: rgb(248, 85, 85); */
+        float: right;
+    }
+
+    .dot {
+        height: 25px;
+        width: 25px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+
+        position: absolute;
+        
+        top: 5%;
+        left: 5%;
+        /* transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%); */
+        color: black;
+        font-size: 16px;
+        /* padding: 16px 30px; */
+        border: none;
+        /* cursor: pointer; */
+        text-align: center;
+        z-index: 100;
+    }
+    .label{
+        /* vertical-align:bottom; */
+        font-size: large;
+        color: #80ff00;
+        margin: auto;
+        margin-top: 10px;
+        text-align: center;
+        /* transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%); */
+        z-index: 99;
+        position:relative;
+        background: transparent;
+        background-color: rgb(255, 232, 255);
+        /* opacity: 30%; */
+        border-radius: 10px;
+        padding: 10px;
+        width: 80%;
+        display: none;
+        /* visibility: hidden; */
+    }
+    #webcamVideo
+    {
+        z-index: 0;
+        /* width: 100%; */
+        /* opacity:.65; */
+        /* min-height:100vh; */
+        margin: auto;
+        /* position:absolute; */
+        min-width: 100%;
+        border-radius: 10px;
+        position:relative;
+        /* position:fixed; */
+        /* background: transparent; */
+        /* border-radius: 5px; */
+        /* -webkit-transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        transform: scaleX(-1); */
+
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
+
+    .cam {
+        /* position: absolute; 
+        right: 0; 
+        bottom: 0;
+        min-width: 100%; 
+        min-height: 100%;
+        width: auto; 
+        height: auto;  */
+        border-radius: 10px;
+        z-index: 1;
+        /* background-size: cover;
+        overflow: hidden; */
+    }
+
+</style></head>
+<script defer  src="index.js"></script> <!-- 20220213 -->
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+<body>
+<!-- <div class="left"> -->
+<h1>心情傳送門(TM)</h1>
+
+<div class="div-relative" style="margin: auto;width: 90%;">
+<div class="msgbox" id="msgbox">
+    <p style="color: black;">
+    
+    <label class="left">Teachable Machine 模型網址:</label>  
+    <input type="text" id="modelurl" class="inputtext" name="inputtext" value=""><br>
+    <!-- <input type="text" id="modelurl" class="inputtext" name="inputtext" value="https://teachablemachine.withgoogle.com/models/r-t4uSsXj/"><br> -->
+ 
+    <label class="left">Adafruit IO 金鑰:</label>
+    <input type="text" id="activekey" class="inputtext" name="inputtext" autocomplete="on" value=""><br>
+    <label class="left">Adafruit IO 帳號:</label>
+    <input type="text" id="username" class="inputtext" name="inputtext" autocomplete="on" value=""><br>
+    <label class="left">Adafruit IO Feed:</label>
+    <input type="text" id="feed" class="inputtext" name="inputtext" autocomplete="on" value="mood"><br>
+    <button id="startBtn" type="button" onclick="init()" disabled>Start</button>
+    </p>
+
+
+</div>
+<!-- <span id="dot1" class="dot"></span> -->
+
+<div id="label-container" class="label"></div>
+<br>
+<div id="webcam-container" class="cam"></div>
+<button id="sendBtn" type="button" onclick="preding()" >分享心情</button>
+</div>
+<!-- </div> -->
+<!-- <div class="right"></div> -->
+</body>
