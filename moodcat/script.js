@@ -193,7 +193,7 @@ function recognizeFaces(){
       //faceapi.draw.drawDetections(canvas, resizedDetections2)
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
-      
+      wait(500)  //0214
       checkCookie()
     }, 100) 
 }
