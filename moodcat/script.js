@@ -124,7 +124,7 @@ async function startVideo(){
     recognizeFaces()
   }
 
-/*
+//0215試用wait
 function wait(ms){ 
     var start = new Date().getTime(); 
     var end = start; 
@@ -132,7 +132,7 @@ function wait(ms){
     end = new Date().getTime(); 
     } 
 }
-*/
+
 var displaySize;
 
 var moods;  //2.global var 因為傳送按鈕
@@ -193,7 +193,7 @@ function recognizeFaces(){
       //faceapi.draw.drawDetections(canvas, resizedDetections2)
       //faceapi.draw.drawFaceLandmarks(canvas, resizedDetections2)
       faceapi.draw.drawFaceExpressions(canvas, resizedDetections2)  
-      wait(500)  //0214
+      wait(500)  //0215
       checkCookie()
     }, 100) 
 }
