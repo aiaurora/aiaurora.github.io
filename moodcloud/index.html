@@ -220,9 +220,10 @@
 
     // More API functions here:
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
-
+    // modelurl 0217
     $(document).ready(function () {
-            $('#activekey').on('input', function () {
+            //$('#activekey').on('input', function () {
+            $('#modelurl').on('input', function () {        //0217手動只要輸入 modelurl的網址
                 if ($(this).val() != '') {
                     $('#startBtn').attr('disabled', false);
                     $('#startBtn').css({'color':'rgb(255,255,255)','background-color':'rgb(65,65,65)'})
