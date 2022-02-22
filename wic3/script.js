@@ -70,7 +70,7 @@ function addToClass(classNum) {
         img.parent(classThreeGallery);
 
         const newExample = {
-            label: "classThreeGallery",
+            label: "Three",
             features: features
         }
 
