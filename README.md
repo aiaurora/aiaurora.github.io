@@ -8,3 +8,4 @@ watchdog
 starface ：no upload
 mstar ：male star face
 wstar ：female star face
+moodcloud：Teachable Machine
